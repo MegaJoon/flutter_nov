@@ -274,6 +274,8 @@ class _RemindersMobileAppState extends State<RemindersMobileApp> {
               child: FloatingActionButton(
                 onPressed: () {
                   print("onPressed");
+                  // on clicked event
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage()));
                 },
                 backgroundColor: _btnColor,
                 child: Icon(
