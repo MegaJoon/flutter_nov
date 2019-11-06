@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_nov/1106/myContainer.dart';
+import 'package:flutter_nov/1106/second_page.dart';
 
 // https://dribbble.com/shots/7991398-Reminders-Mobile-App/attachments/525586?mode=media
 
@@ -290,6 +291,7 @@ class _RemindersMobileAppState extends State<RemindersMobileApp> {
 
   _definePages() {
     pages = [
+      //
       Container(
         margin: EdgeInsets.only(top: 16.0, left: 24.0),
         height: 500.0,
@@ -474,6 +476,7 @@ class _RemindersMobileAppState extends State<RemindersMobileApp> {
           ],
         ),
       ),
+      //
       Container(
         height: 229.0,
         child: Placeholder(
