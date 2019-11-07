@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'dart:ui' as prefix0;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as prefix1;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // https://dribbble.com/shots/6151406-Instagram-Dark-or-Light
@@ -23,12 +22,6 @@ class _InstagramAppState extends State<InstagramApp> {
   // about post
   String _postImage = "https://cdn.pixabay.com/photo/2019/10/25/06/07/sky-4576072_960_720.jpg";
   String username = "denil.d";
-
-  // color
-  Color _backgroundColor = Colors.white;
-  Color _iconColor = Colors.black;
-
-  bool darkMode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -75,39 +68,28 @@ class _InstagramAppState extends State<InstagramApp> {
       // first page
       Container(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
-        color: _backgroundColor,
+        color: Colors.white,
         child: CustomScrollView(
           slivers: <Widget>[
             // appbar
             SliverAppBar(
-              backgroundColor: _backgroundColor,
+              backgroundColor: Colors.white,
               //
-              leading: Icon(FontAwesomeIcons.camera, size: 24.0, color: _iconColor,),
+              leading: Icon(FontAwesomeIcons.camera, size: 24.0, color: Colors.black,),
               //
               centerTitle: true,
               title: Text(title,
-                style: TextStyle(fontSize: 32.0, color: _iconColor, fontWeight: FontWeight.bold, fontFamily: "BeautyMountainsPersonalUse"),),
+                style: TextStyle(fontSize: 32.0, color: Colors.black, fontWeight: FontWeight.bold, fontFamily: "BeautyMountainsPersonalUse"),),
               //
               actions: <Widget>[
-                IconButton(
-                  onPressed: (){
-                    setState(() {
-                      // on clicked event => change color, dark mode, normal mode
-                      print("change mode = $darkMode");
-                      darkMode = !darkMode;
-                      _backgroundColor = darkMode? Colors.black : Colors.white;
-                      _iconColor = darkMode? Colors.white : Colors.black;
-                    });
-                  },
-                  icon: Icon(FontAwesomeIcons.paperPlane, size: 24.0, color: _iconColor,),
-                ),
+                Icon(FontAwesomeIcons.paperPlane, size: 24.0, color: Colors.black,),
               ],
             ),
 
             // story
             SliverToBoxAdapter(
               child: Container(
-                color: _backgroundColor,
+                color: Colors.white,
                 margin: EdgeInsets.only(top: 16.0),
                 height: 100.0,
                 child: Column(
@@ -115,15 +97,15 @@ class _InstagramAppState extends State<InstagramApp> {
                     //
                     Row(
                       children: <Widget>[
-                        Text("Stories", style: TextStyle(fontSize: 16.0, color: _iconColor, fontWeight: FontWeight.w600),),
+                        Text("Stories", style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w600),),
                         Spacer(),
-                        Icon(Icons.arrow_right, size: 24.0, color: _iconColor,),
-                        Text("Watch all", style: TextStyle(fontSize: 16.0, color: _iconColor, fontWeight: FontWeight.w600),),
+                        Icon(Icons.arrow_right, size: 24.0, color: Colors.black,),
+                        Text("Watch all", style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w600),),
                       ],
                     ),
 
                     Container(
-                      color: _backgroundColor,
+                      color: Colors.white,
                       height: 76.0,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
@@ -171,9 +153,9 @@ class _InstagramAppState extends State<InstagramApp> {
                                         child: Container(
                                           height: 16.0,
                                           width: 16.0,
-                                          decoration: BoxDecoration(shape: BoxShape.circle, color: _iconColor,
+                                          decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.black,
                                           border: Border.all(color: Colors.white, width: 1.0)),
-                                          child: Center(child: Icon(Icons.add, size: 12.0, color: _backgroundColor,)),
+                                          child: Center(child: Icon(Icons.add, size: 12.0, color: Colors.white,)),
                                         ),
                                       ): Container(),
                                     ],
@@ -182,7 +164,7 @@ class _InstagramAppState extends State<InstagramApp> {
 
                                 SizedBox(height: 4.0,),
                                 Text(itemList[index].name,
-                                  style: TextStyle(fontSize: 10.0, color: index ==0? Colors.grey: _iconColor, fontWeight: FontWeight.w600),
+                                  style: TextStyle(fontSize: 10.0, color: index ==0? Colors.grey: Colors.black, fontWeight: FontWeight.w600),
                                 ),
                               ],
                             ),
@@ -202,7 +184,7 @@ class _InstagramAppState extends State<InstagramApp> {
                 height: 2.0,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: darkMode? [Colors.black, Colors.black]: [Colors.white, Colors.grey[300], Colors.white],
+                    colors: [Colors.white, Colors.grey[300], Colors.white],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   )
@@ -240,7 +222,7 @@ class _InstagramAppState extends State<InstagramApp> {
                                     child: BackdropFilter(
                                       filter: prefix0.ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                                     child: Container(
-                                      color: darkMode? Colors.black: Colors.white.withOpacity(0.8),
+                                      color: Colors.white.withOpacity(0.8),
                                     ),
                                     ),
                                   ),
@@ -301,7 +283,7 @@ class _InstagramAppState extends State<InstagramApp> {
 
                         // text
                         Container(
-                          color: _backgroundColor,
+                          color: Colors.white,
                           height: 100.0,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -313,33 +295,33 @@ class _InstagramAppState extends State<InstagramApp> {
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Icon(Icons.favorite_border, size: 24.0, color: _iconColor,),
+                                    Icon(Icons.favorite_border, size: 24.0, color: Colors.black,),
                                     SizedBox(
                                       width: 8.0,
                                     ),
-                                    Icon(Icons.chat_bubble_outline, size: 24.0, color: _iconColor,),
+                                    Icon(Icons.chat_bubble_outline, size: 24.0, color: Colors.black,),
                                     SizedBox(
                                       width: 8.0,
                                     ),
-                                    Icon(FontAwesomeIcons.paperPlane, size: 24.0, color: _iconColor,),
+                                    Icon(FontAwesomeIcons.paperPlane, size: 24.0, color: Colors.black,),
                                     Spacer(),
-                                    Icon(Icons.bookmark_border, size: 24.0, color: _iconColor,),
+                                    Icon(Icons.bookmark_border, size: 24.0, color: Colors.black,),
                                   ],
                                 ),
                               ),
 
                               Text("2,234 Likes",
-                              style: TextStyle(fontSize: 16.0, color: _iconColor, fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w600),
                               ),
 
                              RichText(
                                text: TextSpan(children: [
                                  TextSpan(text: username,
-                                   style: TextStyle(fontSize: 14.0, color: _iconColor, fontWeight: FontWeight.w600),
+                                   style: TextStyle(fontSize: 14.0, color: Colors.black, fontWeight: FontWeight.w600),
                                  ),
 
                                  TextSpan(text: "    Hi !!  ",
-                                   style: TextStyle(fontSize: 16.0, color: _iconColor, fontWeight: FontWeight.w400),
+                                   style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w400),
                                  ),
 
                                  TextSpan(text: "#neonphotoset",
