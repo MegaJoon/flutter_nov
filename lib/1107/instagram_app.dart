@@ -614,7 +614,7 @@ class _InstagramAppState extends State<InstagramApp> {
 
                           // saved story
                           Container(
-                            margin: EdgeInsets.only(left: 48.0),
+                            margin: EdgeInsets.only(left: 24.0),
                             height: 70.0,
                             child: ListView(
                               scrollDirection: Axis.horizontal,
@@ -683,7 +683,52 @@ class _InstagramAppState extends State<InstagramApp> {
                     ),
                   ),
 
+                  // tabbar
+                  SliverToBoxAdapter(
+                    child: Container(
+                      height: 64.0,
+                      color: Colors.grey[100],
+                      child: Row(
+                        children: <Widget>[
+                          Flexible(
+                            child: Center(child: Icon(Icons.dialpad, size: 24.0, color: Colors.lightBlueAccent,)),
+                          ),
+
+                          Flexible(
+                            child: Center(child: Icon(Icons.menu, size: 24.0, color: Colors.grey,)),
+                          ),
+
+                          Flexible(
+                            child: Center(child: Icon(Icons.remove_circle_outline, size: 24.0, color: Colors.grey,)),
+                          ),
+
+                          Flexible(
+                            child: Center(child: Icon(Icons.crop_square, size: 24.0, color: Colors.grey,)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
                   // gridview
+                  SliverGrid(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          mainAxisSpacing: 2.0,
+                          crossAxisSpacing: 2.0),
+                    delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index){
+                          return Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(itemList[index %5].image),
+                                fit: BoxFit.fill
+                              )
+                            ),
+                          );
+                        }
+                    ),
+                  )
                 ],
               ),
             ),
