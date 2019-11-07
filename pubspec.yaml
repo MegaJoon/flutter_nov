@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   badges: ^1.1.0
   path_drawing: ^0.4.0
+  font_awesome_flutter: ^8.5.0
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +44,10 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  fonts:
+    - family: BeautyMountainsPersonalUse
+      fonts:
+        - asset: fonts/BeautyMountainsPersonalUse.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
