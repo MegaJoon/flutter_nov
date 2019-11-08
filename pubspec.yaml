@@ -26,6 +26,7 @@ dependencies:
   badges: ^1.1.0
   path_drawing: ^0.4.0
   font_awesome_flutter: ^8.5.0
+  scrollable_bottom_sheet: ^0.2.1
 
 dev_dependencies:
   flutter_test:
