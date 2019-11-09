@@ -26,7 +26,7 @@ class _StoreConceptAppState extends State<StoreConceptApp> {
               left: true,
               right: true,
               child: Container(
-                height: 150.0,
+                height: 130.0,
                 child: Column(
                   children: <Widget>[
                     // appbar
@@ -35,7 +35,7 @@ class _StoreConceptAppState extends State<StoreConceptApp> {
                       child: Row(
                         children: <Widget>[
                           Text("Shop",
-                          style: TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w300),
+                          style: TextStyle(fontSize: 10.0, color: Colors.white, fontWeight: FontWeight.w300, fontFamily: "Hanson-Bold"),
                           ),
                           Spacer(),
                           Icon(Icons.sort, size: 24.0, color: Colors.white,),
@@ -45,8 +45,29 @@ class _StoreConceptAppState extends State<StoreConceptApp> {
 
                     // tabbar
                     Container(
-                      height: 90.0,
-                      child: Placeholder(),
+                      height: 70.0,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          Text("New\nArrivals",
+                            style: TextStyle(fontSize: 14.0, color: Colors.white, fontWeight: FontWeight.w600, fontFamily: "Hanson-Bold"),
+                          ),
+
+                          SizedBox(width: 32.0,
+                          ),
+
+                          Text("Best\nChoice",
+                            style: TextStyle(fontSize: 14.0, color: Colors.white, fontWeight: FontWeight.w600, fontFamily: "Hanson-Bold"),
+                          ),
+
+                          SizedBox(width: 32.0,
+                          ),
+
+                          Text("On\nSale",
+                            style: TextStyle(fontSize: 14.0, color: Colors.white, fontWeight: FontWeight.w600, fontFamily: "Hanson-Bold"),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -56,7 +77,7 @@ class _StoreConceptAppState extends State<StoreConceptApp> {
 
           // main container
           Positioned(
-            top: 180.0,
+            top: 150.0,
             left: 0,
             right: 0,
             child: Container(

@@ -51,6 +51,9 @@ flutter:
     - family: BeautyMountainsPersonalUse
       fonts:
         - asset: fonts/BeautyMountainsPersonalUse.ttf
+    - family: Hanson-Bold
+      fonts:
+        - asset: fonts/Hanson-Bold.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
