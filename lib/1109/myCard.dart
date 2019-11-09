@@ -5,19 +5,20 @@ import 'package:flutter_nov/1109/card_item_list.dart';
 
 class MyCard extends StatelessWidget {
   final double index;
+  // padding = 16.0;
 
   MyCard(this.index);
 
   @override
   Widget build(BuildContext context) {
-    double ratio = 1.2 / 1.9;  // box ratio
+    double ratio = 1.2 / 1.7;  // box ratio
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints){
         List<Widget> cardList = new List();
 
-        double screenWidth = constraints.maxWidth;  // device width
-        double screenHeight = constraints.maxHeight;  // device height
+        double screenWidth = constraints.maxWidth;  // container width == device width
+        double screenHeight = constraints.maxHeight;  // container height == 450.0
 
         double boxWidth = screenWidth - 32.0;  // box width
         double boxHeight = screenHeight - 32.0;  // box height
@@ -48,7 +49,8 @@ class MyCard extends StatelessWidget {
               ),
               child: AspectRatio(
               aspectRatio: ratio,
-              child: Placeholder()),
+//              child: Placeholder(),
+              ),
             ),
           );
           cardList.add(cardItem);
