@@ -13,6 +13,7 @@ class _AppointmentAppState extends State<AppointmentApp> {
   Color _lightColor = Color.fromRGBO(209, 234, 242, 1);
   Color _color = Color.fromRGBO(164, 211, 228, 1);
   Color _textColor = Color.fromRGBO(0, 145, 174, 1);
+  Color _redColor = Color.fromRGBO(255, 122, 89, 1);
 
   String _image = "assets/sky.png";
 
@@ -21,11 +22,12 @@ class _AppointmentAppState extends State<AppointmentApp> {
 
   ScrollableController controller;
 
-  bool _minium = true;
+  bool _fullScroll = false;
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Stack(
@@ -150,34 +152,37 @@ class _AppointmentAppState extends State<AppointmentApp> {
              snapBelow: true,
              snapAbove: true,
              autoPop: false,
-             scrollTo: ScrollState.full,
+             scrollTo: ScrollState.minimum,  // initial state !!
              callback: (state){
-               if(state == ScrollState.minimum){
+               _fullScroll = false;
+               if(state == ScrollState.full){
                  setState(() {
-                   print("minium");
-                   _minium = true;
+                   print("full scroll");
+                   _fullScroll = true;
                  });
                } else {
                  setState(() {
-                   print("not minium");
-                   _minium = false;
+                   print("not full scroll");
+                   _fullScroll = false;
                  });
                }
              },
              minimumHeight: screenHeight * 0.20 - 48.0,
              child: Container(
+               margin: EdgeInsets.symmetric(horizontal: 16.0),
                height: screenHeight,
                color: Colors.white,
                child: Column(
                  children: <Widget>[
                    Container(
-                     height: _minium? screenHeight * 0.20 - 48.0: 0.0,
+                     height: screenHeight * 0.20 - 48.0,
+//                     color: Colors.amber,
                      child: Column(
                        mainAxisAlignment: MainAxisAlignment.center,
                        children: <Widget>[
-                         Icon(Icons.keyboard_arrow_up, size: 24.0, color: _textColor,
+                         Icon(_fullScroll? Icons.keyboard_arrow_down: Icons.keyboard_arrow_up, size: 24.0, color: _textColor,
                          ),
-                         Text("Swipe Up",
+                         Text(_fullScroll? "Swipe Down" : "Swipe Up",
                          style: TextStyle(fontSize: 16.0, color: _textColor, fontWeight: FontWeight.w600),
                          ),
                        ],
@@ -185,13 +190,388 @@ class _AppointmentAppState extends State<AppointmentApp> {
                    ),
 
                    Container(
-                     height: 500.0,
-                     child: Placeholder(),
+                     height: screenHeight * 0.80 + 48.0,
+//                     color: Colors.redAccent,
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
+                         // time
+                         Container(
+                           margin: EdgeInsets.symmetric(vertical: 16.0),
+//                           height: 300.0,
+                           height: 220.0,
+                           width: MediaQuery.of(context).size.width,
+                           decoration: BoxDecoration(
+                             color: Colors.white,
+                             borderRadius: BorderRadius.circular(16.0),
+                             boxShadow: [BoxShadow(
+                               color: Colors.black12, spreadRadius: 2, blurRadius: 4,
+                             )]
+                           ),
+                           child: Column(
+                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                             children: <Widget>[
+                               // time
+                               Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                 children: <Widget>[
+                                   Container(
+                                     height: 50.0,
+                                     width: 100.0,
+                                     decoration: BoxDecoration(
+                                       borderRadius: BorderRadius.circular(8.0),
+                                       color: Colors.grey[200],
+                                     ),
+                                     child: Center(
+                                         child: Text("9:00 am",
+                                         style: TextStyle(
+                                           color: _textColor, fontSize: 16.0, fontWeight: FontWeight.w600
+                                         ),
+                                         ),
+                                     ),
+                                   ),
+
+                                   Container(
+                                     height: 50.0,
+                                     width: 100.0,
+                                     decoration: BoxDecoration(
+                                       borderRadius: BorderRadius.circular(8.0),
+                                       color: Colors.grey[200],
+                                     ),
+                                     child: Center(
+                                       child: Text("10:00 am",
+                                         style: TextStyle(
+                                             color: _textColor, fontSize: 16.0, fontWeight: FontWeight.w600
+                                         ),
+                                       ),
+                                     ),
+                                   ),
+
+                                   Container(
+                                     height: 50.0,
+                                     width: 100.0,
+                                     decoration: BoxDecoration(
+                                       borderRadius: BorderRadius.circular(8.0),
+                                       color: Colors.grey[200],
+                                     ),
+                                     child: Center(
+                                       child: Text("11:00 am",
+                                         style: TextStyle(
+                                             color: _textColor, fontSize: 16.0, fontWeight: FontWeight.w600
+                                         ),
+                                       ),
+                                     ),
+                                   ),
+                                 ],
+                               ),
+                               Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                 children: <Widget>[
+                                   Container(
+                                     height: 50.0,
+                                     width: 100.0,
+                                     decoration: BoxDecoration(
+                                       borderRadius: BorderRadius.circular(8.0),
+                                       color: _redColor,
+                                     ),
+                                     child: Center(
+                                       child: Text("12:00 am",
+                                         style: TextStyle(
+                                             color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.w600
+                                         ),
+                                       ),
+                                     ),
+                                   ),
+
+                                   Container(
+                                     height: 50.0,
+                                     width: 100.0,
+                                     decoration: BoxDecoration(
+                                       borderRadius: BorderRadius.circular(8.0),
+                                       color: Colors.grey[200],
+                                     ),
+                                     child: Center(
+                                       child: Text("1:00 pm",
+                                         style: TextStyle(
+                                             color: _textColor, fontSize: 16.0, fontWeight: FontWeight.w600
+                                         ),
+                                       ),
+                                     ),
+                                   ),
+
+                                   Container(
+                                     height: 50.0,
+                                     width: 100.0,
+                                     decoration: BoxDecoration(
+                                       borderRadius: BorderRadius.circular(8.0),
+                                       color: Colors.grey[200],
+                                     ),
+                                     child: Center(
+                                       child: Text("2:00 pm",
+                                         style: TextStyle(
+                                             color: _textColor, fontSize: 16.0, fontWeight: FontWeight.w600
+                                         ),
+                                       ),
+                                     ),
+                                   ),
+                                 ],
+                               ),
+//                               Row(
+//                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                                 children: <Widget>[
+//                                   Container(
+//                                     height: 50.0,
+//                                     width: 100.0,
+//                                     decoration: BoxDecoration(
+//                                       borderRadius: BorderRadius.circular(8.0),
+//                                       color: Colors.grey[200],
+//                                     ),
+//                                     child: Center(
+//                                       child: Text("3:00 pm",
+//                                         style: TextStyle(
+//                                             color: _textColor, fontSize: 16.0, fontWeight: FontWeight.w600
+//                                         ),
+//                                       ),
+//                                     ),
+//                                   ),
+//
+//                                   Container(
+//                                     height: 50.0,
+//                                     width: 100.0,
+//                                     decoration: BoxDecoration(
+//                                       borderRadius: BorderRadius.circular(8.0),
+//                                       color: Colors.grey[200],
+//                                     ),
+//                                     child: Center(
+//                                       child: Text("4:00 pm",
+//                                         style: TextStyle(
+//                                             color: _textColor, fontSize: 16.0, fontWeight: FontWeight.w600
+//                                         ),
+//                                       ),
+//                                     ),
+//                                   ),
+//
+//                                   Container(
+//                                     height: 50.0,
+//                                     width: 100.0,
+//                                     decoration: BoxDecoration(
+//                                       borderRadius: BorderRadius.circular(8.0),
+//                                       color: Colors.grey[200],
+//                                     ),
+//                                     child: Center(
+//                                       child: Text("5:00 pm",
+//                                         style: TextStyle(
+//                                             color: _textColor, fontSize: 16.0, fontWeight: FontWeight.w600
+//                                         ),
+//                                       ),
+//                                     ),
+//                                   ),
+//                                 ],
+//                               ),
+
+                               // !
+                               Container(
+                                 margin: EdgeInsets.only(left: 24.0, right: 24.0, bottom: 24.0, top: 16.0),
+                                 height: 60.0,
+                                 width: screenWidth,
+                                 decoration: BoxDecoration(
+                                   color: _lightColor,
+                                   borderRadius: BorderRadius.circular(8.0),
+                                 ),
+                                 child: Row(
+                                   children: <Widget>[
+                                     // ! container
+                                     Container(
+                                       margin: EdgeInsets.symmetric(horizontal: 16.0),
+                                       height: 24.0,
+                                       width: 24.0,
+                                       decoration: BoxDecoration(
+                                         shape: BoxShape.circle,
+                                         color: _color,
+                                       ),
+                                       child: Center(
+                                         child: Text("!",
+                                         style: TextStyle(fontSize: 16.0, color: _textColor, fontWeight: FontWeight.w600),
+                                         ),
+                                       ),
+                                     ),
+
+                                     // text
+                                     Text("All times are in\nCentral Time (US & Canada)",
+                                       style: TextStyle(fontSize: 14.0, color: _textColor, fontWeight: FontWeight.w400),
+                                     ),
+
+                                     Spacer(),
+
+                                     // icon >
+                                     Icon(Icons.arrow_forward_ios, size: 24.0, color: _textColor,),
+                                   ],
+                                 ),
+                               ),
+                             ],
+                           ),
+                         ),
+
+                         // add your details
+                         Container(
+                           height: 250.0,
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: <Widget>[
+                               Text("Add your details",
+                               style: TextStyle(fontSize: 24.0, color: _textColor, fontWeight: FontWeight.bold),
+                               ),
+
+                               // grey container
+                               // name
+                               Container(
+                                 margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                                 padding: EdgeInsets.only(left: 16.0),
+                                 height: 48.0,
+                                 decoration: BoxDecoration(
+                                   color: Colors.grey[200],
+                                   borderRadius: BorderRadius.circular(8.0),
+                                 ),
+                                 child: Row(
+                                   children: <Widget>[
+                                     Text("Name",
+                                     style: TextStyle(fontSize: 16.0, color: Colors.grey, fontWeight: FontWeight.w400),
+                                     ),
+
+                                     SizedBox(
+                                       width: 32.0,
+                                     ),
+
+                                     Text("Bettie Morton",
+                                       style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w400),
+                                     ),
+                                   ],
+                                 ),
+                               ),
+
+                               // email
+                               Container(
+                                 margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                                 padding: EdgeInsets.only(left: 16.0),
+                                 height: 48.0,
+                                 decoration: BoxDecoration(
+                                   color: Colors.grey[200],
+                                   borderRadius: BorderRadius.circular(8.0),
+                                 ),
+                                 child: Row(
+                                   children: <Widget>[
+                                     Text("Email",
+                                       style: TextStyle(fontSize: 16.0, color: Colors.grey, fontWeight: FontWeight.w400),
+                                     ),
+
+                                     SizedBox(
+                                       width: 32.0,
+                                     ),
+
+                                     Text("bettie.morton@gmail.com",
+                                       style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w400),
+                                     ),
+                                   ],
+                                 ),
+                               ),
+
+                               // phone
+//                               Container(
+//                                 margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+//                                 padding: EdgeInsets.only(left: 16.0),
+//                                 height: 48.0,
+//                                 decoration: BoxDecoration(
+//                                   color: Colors.grey[200],
+//                                   borderRadius: BorderRadius.circular(8.0),
+//                                 ),
+//                                 child: Row(
+//                                   children: <Widget>[
+//                                     Text("Phone",
+//                                       style: TextStyle(fontSize: 16.0, color: Colors.grey, fontWeight: FontWeight.w400),
+//                                     ),
+//
+//                                     SizedBox(
+//                                       width: 32.0,
+//                                     ),
+//
+//                                     Text("+1 212-284-1800",
+//                                       style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w400),
+//                                     ),
+//                                   ],
+//                                 ),
+//                               ),
+
+                               // please .......
+                               Container(
+                                 margin: EdgeInsets.only(bottom: 8.0),
+                                 height: 48.0,
+                                 width: screenWidth,
+                                 decoration: BoxDecoration(
+                                   color: _lightColor,
+                                   borderRadius: BorderRadius.circular(8.0),
+                                 ),
+                                 child: Row(
+                                   children: <Widget>[
+                                     // ! container
+                                     Container(
+                                       margin: EdgeInsets.symmetric(horizontal: 16.0),
+                                       height: 24.0,
+                                       width: 24.0,
+                                       decoration: BoxDecoration(
+                                         shape: BoxShape.circle,
+                                         color: _color,
+                                       ),
+                                       child: Center(
+                                         child: Text("?",
+                                           style: TextStyle(fontSize: 16.0, color: _textColor, fontWeight: FontWeight.w600),
+                                         ),
+                                       ),
+                                     ),
+
+                                     // text
+                                     Text("Please let us know if you have any\nspecial requests.",
+                                       style: TextStyle(fontSize: 14.0, color: _textColor, fontWeight: FontWeight.w400),
+                                     ),
+                                   ],
+                                 ),
+                               ),
+
+                               // text 1
+                               Align(
+                                 alignment: Alignment.center,
+                                 child: Text("By Clicking below you agree to these",
+                                 style: TextStyle(fontSize: 12.0, color: Colors.black, fontWeight: FontWeight.w400),
+                                 ),
+                               ),
+
+                               // text 2
+                               Align(
+                                   alignment: Alignment.center,
+                                 child: Text("Privacy Policies.",
+                                   style: TextStyle(fontSize: 12.0, color: _redColor, fontWeight: FontWeight.w400),
+                                 ),
+                               ),
+                             ],
+                           ),
+                         ),
+
+                         // book now
+                         Container(
+                           height: 60.0,
+                           decoration: ShapeDecoration(shape: StadiumBorder(),
+                           color: _redColor),
+                           child: Center(
+                               child: Text("Book Now",
+                               style: TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w600),
+                               ),
+                           ),
+                         ),
+                       ],
+                     ),
                    ),
                  ],
                ),
              ),
-
            ),
          ),
         ],
