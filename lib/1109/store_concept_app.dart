@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nov/1109/card_item_list.dart';
+
+import 'myCard.dart';
 
 // https://dribbble.com/shots/8087321-Store-Concept/attachments/543146?mode=media
 
@@ -8,6 +11,21 @@ class StoreConceptApp extends StatefulWidget {
 }
 
 class _StoreConceptAppState extends State<StoreConceptApp> {
+  PageController pageController;
+
+  double _currentIndex = cardItemList.length - 1.0;
+
+  @override
+  void initState() {
+    pageController = PageController(initialPage: _currentIndex.toInt());
+    pageController.addListener((){
+      setState(() {
+        _currentIndex = pageController.page;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -82,7 +100,26 @@ class _StoreConceptAppState extends State<StoreConceptApp> {
             right: 0,
             child: Container(
               height: 500.0,
-              child: Placeholder(),
+              child: Stack(
+                children: <Widget>[
+                  // main list
+                  MyCard(_currentIndex),
+
+                  // pageView : using page snap
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: PageView.builder(
+                      itemCount: cardItemList.length,
+                        controller: pageController,
+                        itemBuilder: (BuildContext context, int index){
+                          return Container();
+                        }),
+                  ),
+                ],
+              ),
             ),
           ),
 
