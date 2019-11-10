@@ -28,25 +28,25 @@ class _TouchEventState extends State<TouchEvent> with TickerProviderStateMixin {
 
   _playAnimate(){
     isSelected = !isSelected;
-    isSelected? animationController.forward() : null;
-//    isSelected = !isSelected;
+    isSelected? animationController.forward(): null;
   }
 
   @override
   void initState() {
     super.initState();
     animationController = AnimationController(
-        duration: Duration(milliseconds: 300), vsync: this);
+        duration: Duration(milliseconds: 200), vsync: this);
 
-    animation = Tween<double>(begin: 0, end: 80).animate(CurvedAnimation(
+    animation = Tween<double>(begin: 0, end: 150).animate(CurvedAnimation(
         parent: animationController, curve: Curves.fastOutSlowIn)
       ..addListener(() {
         setState(() {});
       })
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          animationController.reverse();
+//          animationController.reverse();
           isSelected = !isSelected;
+          animationController.reset();
         }
       })
     );
@@ -66,16 +66,16 @@ class _TouchEventState extends State<TouchEvent> with TickerProviderStateMixin {
           Stack(
             children: <Widget>[
               isSelected? Positioned(
-                      top: positionY - 50.0 - animation.value,
-                      left: positionX - 100.0 / 2,
+                      top: positionY - 100.0 - animation.value,
+                      left: positionX - 200.0 / 2,
                       child: Container(
-                        height: 50.0,
-                        width: 100.0,
+                        height: 100.0,
+                        width: 200.0,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle, color: Colors.teal),
                         child: Center(
                           child: Icon(Icons.favorite,
-                              size: 32.0, color: Colors.pinkAccent),
+                              size: 40.0, color: Colors.pinkAccent),
                         ),
                       ),
                     ): Container(),
