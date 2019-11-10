@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nov/touch_event.dart';
 
 import '1106/reminders_mobile_app.dart';
 import '1107/instagram_app.dart';
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
 //      home: InstagramApp(),  // 11-07
 //      home: FitnessApp(),  // 11-08
 //      home: AppointmentApp(),  // 11-08
-      home: StoreConceptApp(),  // 11-09
+//      home: StoreConceptApp(),  // 11-09
+      home: TouchEvent(),  // 11-10
   );
 }
 }
