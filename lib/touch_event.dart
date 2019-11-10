@@ -6,7 +6,12 @@ class TouchEvent extends StatefulWidget {
   _TouchEventState createState() => _TouchEventState();
 }
 
-class _TouchEventState extends State<TouchEvent> {
+class _TouchEventState extends State<TouchEvent> with TickerProviderStateMixin {
+  // animate
+  Animation animation;
+  AnimationController animationController;
+
+  //
   bool isSelected = false;
   double positionX;
   double positionY;
@@ -21,6 +26,38 @@ class _TouchEventState extends State<TouchEvent> {
     positionY = details.globalPosition.dy;
   }
 
+  _playAnimate(){
+    isSelected = !isSelected;
+    isSelected? animationController.forward() : null;
+//    isSelected = !isSelected;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+        duration: Duration(milliseconds: 300), vsync: this);
+
+    animation = Tween<double>(begin: 0, end: 80).animate(CurvedAnimation(
+        parent: animationController, curve: Curves.fastOutSlowIn)
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          animationController.reverse();
+          isSelected = !isSelected;
+        }
+      })
+    );
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,26 +66,26 @@ class _TouchEventState extends State<TouchEvent> {
           Stack(
             children: <Widget>[
               isSelected? Positioned(
-                top: positionY - 50.0,
-                left: positionX - 100.0 / 2,
-                child: Container(
-                  height: 50.0,
-                  width: 100.0,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.teal),
-                  child: Center(
-                      child: Icon(Icons.favorite, size: 32.0, color: Colors.pinkAccent),
-                  ),
-                ),
-              ): Container()
+                      top: positionY - 50.0 - animation.value,
+                      left: positionX - 100.0 / 2,
+                      child: Container(
+                        height: 50.0,
+                        width: 100.0,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.teal),
+                        child: Center(
+                          child: Icon(Icons.favorite,
+                              size: 32.0, color: Colors.pinkAccent),
+                        ),
+                      ),
+                    ): Container(),
             ],
           ),
-
           GestureDetector(
-            onTap: (){
+            onTap: () {
               setState(() {
                 print(positionX.toString() + " / " + positionY.toString());
-                isSelected = !isSelected;  // isSelected == true
+                _playAnimate();
               });
             },
             onTapUp: (TapUpDetails details) => _onTapUp(details),
