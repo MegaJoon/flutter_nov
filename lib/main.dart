@@ -7,6 +7,7 @@ import '1108/appointmentapp.dart';
 import '1108/fitnessapp.dart';
 import '1109/store_concept_app.dart';
 import '1110/custom_tabbar_example.dart';
+import '1111/waffles.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
 //      home: AppointmentApp(),  // 11-08
 //      home: StoreConceptApp(),  // 11-09
 //      home: TouchEvent(),  // 11-10
-      home: CustomTabbarExample(),  // 11-10
+//      home: CustomTabbarExample(),  // 11-10
+      home: WafflesApp(),  // 11-11
   );
 }
 }
