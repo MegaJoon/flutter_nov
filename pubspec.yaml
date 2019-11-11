@@ -42,6 +42,8 @@ flutter:
     - assets/sky.png
     - assets/fitness0.png
     - assets/fitness1.png
+    - assets/waffle_image.png
+    - assets/waffle_image1.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
