@@ -27,6 +27,7 @@ dependencies:
   path_drawing: ^0.4.0
   font_awesome_flutter: ^8.5.0
   scrollable_bottom_sheet: ^0.2.1
+  dots_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -44,6 +45,9 @@ flutter:
     - assets/fitness1.png
     - assets/waffle_image.png
     - assets/waffle_image1.png
+    - assets/travel_image.png
+    - assets/travel_image1.png
+    - assets/travel_image2.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
