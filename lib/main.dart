@@ -25,8 +25,7 @@ class MyApp extends StatelessWidget {
 //      home: TouchEvent(),  // 11-10
 //      home: CustomTabbarExample(),  // 11-10
 //      home: WafflesApp(),  // 11-11
-//      home: TravelApp(),  // 11-12
-      home: TravelSecondPage(),  // 11-12
+      home: TravelApp(),  // 11-12
   );
 }
 }
