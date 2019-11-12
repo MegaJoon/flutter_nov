@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_nov/1112/myTab.dart';
 import 'package:flutter_nov/1112/place_item_list.dart';
+import 'package:flutter_nov/1112/travel_third_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TravelSecondPage extends StatefulWidget {
@@ -84,7 +85,12 @@ class _TravelSecondPageState extends State<TravelSecondPage> {
               height: 64.0,
               child: Row(
                 children: <Widget>[
-                  Icon(Icons.sort, size: 32.0, color: Colors.black),
+                  IconButton(icon: Icon(Icons.sort, size: 32.0, color: Colors.black),
+                  onPressed: (){
+                    setState(() {
+                      Navigator.pop(context);
+                    });
+                  },),
                   Spacer(),
                   Container(
                     height: 40.0,
@@ -154,35 +160,47 @@ class _TravelSecondPageState extends State<TravelSecondPage> {
                           padding: EdgeInsets.only(top: 16.0),
                           shrinkWrap: true,
                           itemBuilder: (BuildContext context, int index){
-                            return Container(
-                              margin: EdgeInsets.only(right: 24.0, bottom: 24.0),
-                              padding: EdgeInsets.all(16.0),
-                              width: 220.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(24.0),
-                                image: DecorationImage(image: NetworkImage(placeItemList[index].image),
-                                  fit: BoxFit.fill),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  // title
-                                  Text(placeItemList[index].text,
-                                  style: TextStyle(fontSize: 24.0, color: Colors.white, fontWeight: FontWeight.bold),
+                          // listview item
+                            return InkWell(
+                              onTap: (){
+                                setState(() {
+                                  // push
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => ThirdTravelPage(index)));
+                                });
+                              },
+                              child: Hero(
+                                tag: "travel $index",
+                                child: Container(
+                                  margin: EdgeInsets.only(right: 24.0, bottom: 24.0),
+                                  padding: EdgeInsets.all(16.0),
+                                  width: 220.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(24.0),
+                                    image: DecorationImage(image: NetworkImage(placeItemList[index].image),
+                                      fit: BoxFit.fill),
                                   ),
-
-                                  // location
-                                  Row(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.end,
                                     children: <Widget>[
-                                      Icon(Icons.location_on, size: 20.0, color: Colors.white),
-                                      SizedBox(width: 4.0),
-                                      Text(placeItemList[index].address,
-                                        style: TextStyle(fontSize: 14.0, color: Colors.white, fontWeight: FontWeight.w400),
+                                      // title
+                                      Text(placeItemList[index].text,
+                                      style: TextStyle(fontSize: 24.0, color: Colors.white, fontWeight: FontWeight.bold),
+                                      ),
+
+                                      // location
+                                      Row(
+                                        children: <Widget>[
+                                          Icon(Icons.location_on, size: 20.0, color: Colors.white),
+                                          SizedBox(width: 4.0),
+                                          Text(placeItemList[index].address,
+                                            style: TextStyle(fontSize: 14.0, color: Colors.white, fontWeight: FontWeight.w400),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
                             );
                           }),
