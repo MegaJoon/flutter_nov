@@ -10,6 +10,7 @@ import '1109/store_concept_app.dart';
 import '1110/custom_tabbar_example.dart';
 import '1111/waffles.dart';
 import '1112/travel_app.dart';
+import '1113/second_travel_community_app.dart';
 import '1113/travel_community_app.dart';
 
 void main() => runApp(MyApp());
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
 //      home: CustomTabbarExample(),  // 11-10
 //      home: WafflesApp(),  // 11-11
 //      home: TravelApp(),  // 11-12
-      home: TravelCommunityApp(),  // 11-13
+//      home: TravelCommunityApp(),  // 11-13
+      home: SecondTravelCommunityApp(),  // 11-13
   );
 }
 }
