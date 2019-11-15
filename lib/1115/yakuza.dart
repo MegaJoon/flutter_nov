@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nov/1115/second_yakuza.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // https://dribbble.com/shots/8207985-Mobile-app-Yakuza/attachments/585375?mode=media
@@ -127,18 +128,27 @@ class _YakuzaAppState extends State<YakuzaApp> {
       height: 150.0,
       child: Stack(
         children: <Widget>[
+          // move page
           // orange container
           Positioned(
             top: 60.0,
             left: 0,
             right: 0,
             bottom: 0,
-            child: Container(
-              color: Colors.deepOrange,
-              child: Center(
-                  child: Text(btnText,
-                  style: TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w600),
-                  ),
+            child: InkWell(
+              onTap: (){
+                setState(() {
+                  // move page
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SecondYakuza()));
+                });
+              },
+              child: Container(
+                color: Colors.deepOrange,
+                child: Center(
+                    child: Text(btnText,
+                    style: TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w600),
+                    ),
+                ),
               ),
             ),
           ),
