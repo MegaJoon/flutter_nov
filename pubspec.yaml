@@ -49,6 +49,11 @@ flutter:
     - assets/travel_image1.png
     - assets/travel_image2.png
     - assets/scenery.jpg
+    - assets/ramen.jpg
+    - assets/rolls.jpg
+    - assets/sashimi.jfif
+    - assets/yakuza.png
+    - assets/yakuza2.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
