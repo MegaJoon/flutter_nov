@@ -12,6 +12,7 @@ import '1111/waffles.dart';
 import '1112/travel_app.dart';
 import '1113/second_travel_community_app.dart';
 import '1113/travel_community_app.dart';
+import '1115/yakuza.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
 //      home: WafflesApp(),  // 11-11
 //      home: TravelApp(),  // 11-12
 //      home: TravelCommunityApp(),  // 11-13
-      home: SecondTravelCommunityApp(),  // 11-13
+//      home: SecondTravelCommunityApp(),  // 11-13
+      home: YakuzaApp(),  // 11-15
   );
 }
 }
