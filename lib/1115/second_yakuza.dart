@@ -77,8 +77,8 @@ class _SecondYakuzaState extends State<SecondYakuza> {
 
   _buildContainer1(){
     return Container(
-      margin: EdgeInsets.only(top: 40.0, left: 16.0, right: 16.0),
-      height: 250.0,
+      margin: EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0),
+      height: 200.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -97,7 +97,7 @@ class _SecondYakuzaState extends State<SecondYakuza> {
                   left: 0,
                   bottom: 0,
                   child: Container(
-                    padding: EdgeInsets.all(24.0),
+                    padding: EdgeInsets.all(20.0),
                     width: 250.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(24.0),
@@ -141,8 +141,8 @@ class _SecondYakuzaState extends State<SecondYakuza> {
 
   _buildContainer2(){
     return Container(
-      margin: EdgeInsets.only(top: 40.0, left: 16.0, right: 16.0),
-      height: 400.0,
+      margin: EdgeInsets.only(top: 32.0, left: 16.0, right: 16.0),
+      height: 360.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -161,7 +161,7 @@ class _SecondYakuzaState extends State<SecondYakuza> {
                 // list 1. ramen
                 Container(
                   margin: EdgeInsets.only(bottom: 16.0),
-                  height: 100.0,
+                  height: 90.0,
                   child: Stack(
                     children: <Widget>[
                       // background container
@@ -218,7 +218,7 @@ class _SecondYakuzaState extends State<SecondYakuza> {
                 // list 2. sashimi
                 Container(
                   margin: EdgeInsets.only(bottom: 16.0),
-                  height: 100.0,
+                  height: 90.0,
                   child: Stack(
                     children: <Widget>[
                       // background container
@@ -275,7 +275,7 @@ class _SecondYakuzaState extends State<SecondYakuza> {
                 // list 3. rolls
                 Container(
                   margin: EdgeInsets.only(bottom: 16.0),
-                  height: 100.0,
+                  height: 90.0,
                   child: Stack(
                     children: <Widget>[
                       // background container

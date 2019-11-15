@@ -125,13 +125,13 @@ class _YakuzaAppState extends State<YakuzaApp> {
 
   _buildBottombar(){
     return Container(
-      height: 150.0,
+      height: 100.0,
       child: Stack(
         children: <Widget>[
           // move page
           // orange container
           Positioned(
-            top: 60.0,
+            top: 40.0,
             left: 0,
             right: 0,
             bottom: 0,
@@ -158,7 +158,7 @@ class _YakuzaAppState extends State<YakuzaApp> {
             top: 0,
             left: MediaQuery.of(context).size.width / 2 - 50.0,
             right: MediaQuery.of(context).size.width / 2 - 50.0,
-            bottom: 150.0 - 80.0,
+            bottom: 100.0 - 55.0,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.0),
