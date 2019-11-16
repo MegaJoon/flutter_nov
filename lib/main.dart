@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_nov/1110/touch_event.dart';
 import 'package:flutter_nov/1112/travel_second_page.dart';
+import 'package:flutter_nov/1116/delivery_app.dart';
 
 import '1106/reminders_mobile_app.dart';
 import '1107/instagram_app.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
 //      home: TravelApp(),  // 11-12
 //      home: TravelCommunityApp(),  // 11-13
 //      home: SecondTravelCommunityApp(),  // 11-13
-      home: YakuzaApp(),  // 11-15
+//      home: YakuzaApp(),  // 11-15
+      home: DeliveryApp(),  // 11-16
   );
 }
 }
