@@ -42,6 +42,12 @@ flutter:
     - assets/fruit_image2.png
     - assets/fruit_image3.png
     - assets/delivery.gif
+    - assets/wallet.png
+    - assets/card.png
+    - assets/sim_card.png
+    - assets/pos.png
+    - assets/bill.png
+    - assets/pattern.jpg
 
   uses-material-design: true
   fonts:
