@@ -48,6 +48,10 @@ flutter:
     - assets/pos.png
     - assets/bill.png
     - assets/pattern.jpg
+    - assets/wine.png
+    - assets/wine2.png
+    - assets/wine3.png
+    - assets/wine4.png
 
   uses-material-design: true
   fonts:
