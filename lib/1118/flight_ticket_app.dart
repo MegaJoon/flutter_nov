@@ -11,9 +11,11 @@ class FlightTicketApp extends StatefulWidget {
 }
 
 class _FlightTicketAppState extends State<FlightTicketApp> {
+  // color list
   Color _color = Color.fromRGBO(1, 100, 212, 1);
   Color _accentColor = Color.fromRGBO(34, 82, 136, 1);
 
+  // padding
   double padding = 24.0;
 
   @override
@@ -26,6 +28,7 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
             top: 0,
             left: 0,
             right: 0,
+            // blue color
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: padding),
               height: 250.0,
@@ -37,6 +40,7 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
               )),
               child: Row(
                 children: <Widget>[
+                  // left text : CGK
                   Flexible(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,6 +65,8 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
                       ],
                     ),
                   ),
+
+                  // center line, icon
                   Flexible(
                     flex: 3,
                     child: Container(
@@ -114,6 +120,8 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
                       ),
                     ),
                   ),
+
+                  // right text : LHR
                   Flexible(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -187,6 +195,7 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
             bottom: 100.0,
             child: Column(
               children: <Widget>[
+                // top container
                 Flexible(
                   flex: 2,
                   child: Container(
@@ -203,6 +212,7 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
                         ]),
                     child: Column(
                       children: <Widget>[
+                        //
                         Flexible(
                           flex: 2,
                           child: Row(
@@ -418,6 +428,8 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
                     ),
                   ),
                 ),
+
+                // spacer
                 SizedBox(height: padding * 2),
 
                 // bottom container
@@ -446,8 +458,10 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
                                   children: <Widget>[
                                     SizedBox(width: 12.0),
                                     Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: <Widget>[
                                         Text(
                                           "Passenger",
@@ -485,7 +499,6 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
                                     ),
                                   ],
                                 ),
-
                                 Row(
                                   children: <Widget>[
                                     Flexible(
@@ -598,25 +611,31 @@ class _FlightTicketAppState extends State<FlightTicketApp> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Align(
-                                alignment: Alignment.centerLeft,
-                                  child: Text("Barcode",
-                                    style: TextStyle(fontSize: 14.0, color: Colors.black, fontWeight: FontWeight.w600),
-                                ),
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    "Barcode",
+                                    style: TextStyle(
+                                        fontSize: 14.0,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                 ),
 
                                 // barcode image
                                 Container(
                                   height: 80.0,
                                   width: double.infinity,
-                                  child: Image.asset("assets/barcode.jpg", fit: BoxFit.fill),
+                                  child: Image.asset("assets/barcode.jpg",
+                                      fit: BoxFit.fill),
                                 ),
 
-                                Text("ET-10255471FA",
-                                style: TextStyle(
-                                  fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold
+                                Text(
+                                  "ET-10255471FA",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                ),
-
                               ],
                             ),
                           ),
