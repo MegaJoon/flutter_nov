@@ -52,6 +52,8 @@ flutter:
     - assets/wine2.png
     - assets/wine3.png
     - assets/wine4.png
+    - assets/emirates.png
+    - assets/barcode.jpg
 
   uses-material-design: true
   fonts:
