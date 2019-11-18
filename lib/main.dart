@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nov/1118/flight_ticket_app.dart';
 
 import '1106/reminders_mobile_app.dart';
 import '1107/instagram_app.dart';
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
 //      home: DeliveryApp(),  // 11-16
 //      home: FirebaseExample(),  // 11-17
 //      home: PaymentApp(),  // 11-17
-      home: WinesApp(),  // 11-17
+//      home: WinesApp(),  // 11-17
+      home: FlightTicketApp(),  // 11-18
   );
 }
 }
