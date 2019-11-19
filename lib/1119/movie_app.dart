@@ -182,7 +182,7 @@ class _MovieAppState extends State<MovieApp> {
                           children: <Widget>[
                             // top container - movie image
                             Container(
-                              height: 320.0,
+                              height: 280.0,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(36.0),
                                 image: DecorationImage(
@@ -345,7 +345,7 @@ class _MovieAppState extends State<MovieApp> {
 
                                           // buy ticket - container
                                           Container(
-                                            height: 52.0,
+                                            height: 40.0,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
