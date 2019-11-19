@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_nov/1118/flight_ticket_app.dart';
-import 'package:flutter_nov/1118/movie_app.dart';
+import 'package:flutter_nov/1119/control_scroll.dart';
+import 'package:flutter_nov/1119/movie_app.dart';
 import 'package:flutter_nov/1119/todo_app.dart';
 
 import '1106/reminders_mobile_app.dart';
@@ -44,8 +45,9 @@ class MyApp extends StatelessWidget {
 //      home: PaymentApp(),  // 11-17
 //      home: WinesApp(),  // 11-17
 //      home: FlightTicketApp(),  // 11-18
-//      home: MovieApp(),  // 11-18
-      home: TodoApp(),  // 11-19
+//      home: TodoApp(),  // 11-19
+//      home: ControlScroll(),  // 11-19
+      home: MovieApp(),  // 11-19
   );
 }
 }
