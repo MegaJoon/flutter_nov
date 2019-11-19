@@ -234,17 +234,125 @@ class _TodoAppState extends State<TodoApp> {
 
                // your habits
                Container(
-                 height: 250.0,
+                 margin: EdgeInsets.only(top: padding),
+                 height: 220.0,
                  child: Placeholder(),
                ),
 
                 // today's tasks
                 Container(
-                  height: 250.0,
-                  child: Placeholder(),
+                  margin: EdgeInsets.only(top: padding),
+                  height: 220.0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      // title
+                      Text("Today's tasks",
+                      style: TextStyle(
+                        fontSize: 24.0, color: _textColor, fontWeight: FontWeight.bold),
+                      ),
+
+                      // container
+                      Container(
+                        padding: EdgeInsets.all(padding * 0.5),
+                        height: 52.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40.0),
+                          color: _containerColor,
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            // check-icon container
+                            Container(
+                              margin: EdgeInsets.only(right: padding),
+                              height: 28.0,
+                              width: 28.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                                color: habitColor[1],
+                              ),
+                              child: Center(
+                                  child: Icon(Icons.check, size: 24.0, color: _textColor),
+                              ),
+                            ),
+
+                            // text
+                            Text("Buy food for dinner",
+                            style: TextStyle(
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 16.0, color: Colors.grey, fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Container(
+                        padding: EdgeInsets.all(padding * 0.5),
+                        height: 52.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40.0),
+                          color: _containerColor,
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            // check container
+                            Container(
+                              margin: EdgeInsets.only(right: padding),
+                              height: 28.0,
+                              width: 28.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                                border: Border.all(
+                                  color: habitColor[1],
+                                  width: 2.0
+                                ),
+                              ),
+                            ),
+
+                            // text
+                            Text("Call Marie",
+                              style: TextStyle(
+                                  fontSize: 16.0, color: _textColor, fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Container(
+                        padding: EdgeInsets.all(padding * 0.5),
+                        height: 52.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40.0),
+                          color: _containerColor,
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            // check container
+                            Container(
+                              margin: EdgeInsets.only(right: padding),
+                              height: 28.0,
+                              width: 28.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                                border: Border.all(
+                                    color: habitColor[1],
+                                    width: 2.0
+                                ),
+                              ),
+                            ),
+
+                            // text
+                            Text("Go to the gym",
+                              style: TextStyle(
+                                  fontSize: 16.0, color: _textColor, fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-
-
               ],
             ),
           ),
