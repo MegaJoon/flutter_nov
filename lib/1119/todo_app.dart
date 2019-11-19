@@ -8,16 +8,21 @@ class TodoApp extends StatefulWidget {
 }
 
 class _TodoAppState extends State<TodoApp> {
-  // Color list
+  // change mode
+  bool modeChange = false; // normal
+
+  // change color
+  bool modeColor = false;
+
+  // Darkmode - Color list
   Color _backgroundColor = Color.fromRGBO(46, 46, 46, 1);
   Color _containerColor = Color.fromRGBO(40, 40, 40, 1);
   Color _textColor = Colors.white;
 
-  List<Color> habitColor = [
-    Color.fromRGBO(68, 63, 121, 1),
-    Color.fromRGBO(224, 124, 124, 1),
-    Color.fromRGBO(242, 162, 101, 1),
-  ];
+  // normal mode - Color list
+  Color _normalModeBackgroundColor = Colors.grey[100];
+  Color _normalModeContainerColor = Colors.white;
+  Color _normalModeTextColor = Colors.black;
 
   // title
   String title = "Good evening,\nJack";
@@ -27,7 +32,7 @@ class _TodoAppState extends State<TodoApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _backgroundColor,
+      backgroundColor: modeChange? _backgroundColor : _normalModeBackgroundColor,
       // body
       body: Stack(
         children: <Widget>[
@@ -47,7 +52,7 @@ class _TodoAppState extends State<TodoApp> {
                     title,
                     style: TextStyle(
                         fontSize: 32.0,
-                        color: _textColor,
+                        color: modeChange? _textColor : _normalModeTextColor,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -60,7 +65,7 @@ class _TodoAppState extends State<TodoApp> {
                 height: 80.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40.0),
-                  color: _containerColor,
+                  color: modeChange? _containerColor: _normalModeContainerColor,
                 ),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,7 +82,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 52.0,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: habitColor[1].withOpacity(0.8),
+                              color: habitList[1].color.withOpacity(0.8),
                             ),
                             child: Center(
                               child: Text(
@@ -93,7 +98,7 @@ class _TodoAppState extends State<TodoApp> {
                             "Mon",
                             style: TextStyle(
                                 fontSize: 12.0,
-                                color: _textColor,
+                                color: modeChange? _textColor : Colors.grey,
                                 fontWeight: FontWeight.w400),
                           ),
                         ],
@@ -111,7 +116,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 52.0,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: habitColor[1].withOpacity(0.8),
+                              color: habitList[1].color.withOpacity(0.8),
                             ),
                             child: Center(
                               child: Text(
@@ -127,7 +132,7 @@ class _TodoAppState extends State<TodoApp> {
                             "Tue",
                             style: TextStyle(
                                 fontSize: 12.0,
-                                color: _textColor,
+                                color: modeChange? _textColor : Colors.grey,
                                 fontWeight: FontWeight.w400),
                           ),
                         ],
@@ -147,7 +152,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 56.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16.0),
-                              color: habitColor[1],
+                              color: habitList[1].color,
                             ),
                             child: Center(
                               child: Text(
@@ -163,7 +168,7 @@ class _TodoAppState extends State<TodoApp> {
                             "Wed",
                             style: TextStyle(
                                 fontSize: 12.0,
-                                color: _textColor,
+                                color: modeChange? _textColor : _normalModeTextColor,
                                 fontWeight: FontWeight.w400),
                           ),
                         ],
@@ -184,7 +189,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 52.0,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: habitColor[1].withOpacity(0.8),
+                              color: habitList[1].color.withOpacity(0.8),
                             ),
                             child: Center(
                               child: Text(
@@ -200,7 +205,7 @@ class _TodoAppState extends State<TodoApp> {
                             "Thu",
                             style: TextStyle(
                                 fontSize: 12.0,
-                                color: _textColor,
+                                color: modeChange? _textColor : Colors.grey,
                                 fontWeight: FontWeight.w400),
                           ),
                         ],
@@ -218,7 +223,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 52.0,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: habitColor[1].withOpacity(0.8),
+                              color: habitList[1].color.withOpacity(0.8),
                             ),
                             child: Center(
                               child: Text(
@@ -234,7 +239,7 @@ class _TodoAppState extends State<TodoApp> {
                             "Fri",
                             style: TextStyle(
                                 fontSize: 12.0,
-                                color: _textColor,
+                                color: modeChange? _textColor : Colors.grey,
                                 fontWeight: FontWeight.w400),
                           ),
                         ],
@@ -249,7 +254,100 @@ class _TodoAppState extends State<TodoApp> {
                padding: EdgeInsets.only(left: padding),
 //               margin: EdgeInsets.only(top: padding),
                height: 220.0,
-               child: Placeholder(),
+               child: Column(
+                 children: <Widget>[
+                   Row(
+                     children: <Widget>[
+                       Text("Your habits",
+                         style: TextStyle(
+                             fontSize: 24.0,
+                             color: modeChange? _textColor : _normalModeTextColor,
+                             fontWeight: FontWeight.bold),
+                       ),
+
+                       Spacer(),
+
+                       Container(
+                         margin: EdgeInsets.only(right: padding),
+                         height: 24.0,
+                         width: 24.0,
+                         decoration: BoxDecoration(
+                           shape: BoxShape.circle,
+                           color: habitList[1].color,
+                         ),
+                         child: Center(
+                             child: Icon(Icons.add, size: 16.0, color: _textColor)),
+                       ),
+                     ],
+                   ),
+
+                   // listview
+                   Container(
+                     height: 189.0,
+                     child: ListView.builder(
+                         padding: EdgeInsets.only(top: padding *0.5),
+                         scrollDirection: Axis.horizontal,
+                         itemCount: habitList.length,
+                         shrinkWrap: true,
+                         itemBuilder: (BuildContext context, int index){
+                           return Container(
+                             padding: EdgeInsets.all(padding),
+                             margin: EdgeInsets.only(right: padding * 0.5),
+                             width: 150.0,
+                             decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(40.0),
+                               color: habitList[index].color,
+                             ),
+                             child: Column(
+                               crossAxisAlignment: CrossAxisAlignment.start,
+                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: <Widget>[
+                                 // icon
+                                 Container(
+                                   height: 40.0,
+                                   width: 40.0,
+                                   decoration: BoxDecoration(
+                                     shape: BoxShape.circle,
+                                     color: Colors.black12,
+                                   ),
+                                   child: Center(
+                                       child: Icon(habitList[index].icon, size: 28.0, color: _textColor)),
+                                 ),
+
+                                 Spacer(),
+
+                                 // text
+                                 Text(habitList[index].title,
+                                 style: TextStyle(
+                                   fontSize: 22.0, color: _textColor, fontWeight: FontWeight.bold
+                                 ),
+                                 ),
+
+                                 // percent
+                                 Container(
+                                   margin: EdgeInsets.only(top: 8.0, bottom: 8.0, right: padding),
+                                   height: 6.0,
+                                   decoration: BoxDecoration(
+                                     color: _containerColor,
+                                     borderRadius: BorderRadius.circular(16.0)
+                                   ),
+                                   child: Container(
+                                     margin: EdgeInsets.only(right: padding * habitList[index].percent),
+                                     color: _textColor,
+                                   ),
+                                 ),
+
+                                 // sheet
+                                 Text(habitList[index].sheets, style: TextStyle(fontSize: 16.0, color: _textColor.withOpacity(0.8),
+                                     fontWeight: FontWeight.bold),
+                                 ),
+                               ],
+                             ),
+                           );
+                         }),
+                   ),
+                 ],
+               ),
              ),
 
               // today's tasks
@@ -264,7 +362,9 @@ class _TodoAppState extends State<TodoApp> {
                     // title
                     Text("Today's tasks",
                     style: TextStyle(
-                      fontSize: 24.0, color: _textColor, fontWeight: FontWeight.bold),
+                      fontSize: 24.0,
+                        color: modeChange? _textColor : _normalModeTextColor,
+                        fontWeight: FontWeight.bold),
                     ),
 
                     // container
@@ -273,7 +373,7 @@ class _TodoAppState extends State<TodoApp> {
                       height: 52.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40.0),
-                        color: _containerColor,
+                        color: modeChange? _containerColor : _normalModeContainerColor,
                       ),
                       child: Row(
                         children: <Widget>[
@@ -284,7 +384,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 28.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
-                              color: habitColor[1],
+                              color: habitList[1].color,
                             ),
                             child: Center(
                                 child: Icon(Icons.check, size: 24.0, color: _textColor),
@@ -306,7 +406,7 @@ class _TodoAppState extends State<TodoApp> {
                       height: 52.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40.0),
-                        color: _containerColor,
+                        color: modeChange? _containerColor : _normalModeContainerColor,
                       ),
                       child: Row(
                         children: <Widget>[
@@ -318,7 +418,7 @@ class _TodoAppState extends State<TodoApp> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
-                                color: habitColor[1],
+                                  color: habitList[1].color,
                                 width: 2.0
                               ),
                             ),
@@ -327,7 +427,9 @@ class _TodoAppState extends State<TodoApp> {
                           // text
                           Text("Call Marie",
                             style: TextStyle(
-                                fontSize: 16.0, color: _textColor, fontWeight: FontWeight.w400),
+                                fontSize: 16.0,
+                                color: modeChange? _textColor: _normalModeTextColor,
+                                fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
@@ -338,7 +440,7 @@ class _TodoAppState extends State<TodoApp> {
                       height: 52.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40.0),
-                        color: _containerColor,
+                        color: modeChange? _containerColor : _normalModeContainerColor,
                       ),
                       child: Row(
                         children: <Widget>[
@@ -350,7 +452,7 @@ class _TodoAppState extends State<TodoApp> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
-                                  color: habitColor[1],
+                                  color: habitList[1].color,
                                   width: 2.0
                               ),
                             ),
@@ -359,7 +461,9 @@ class _TodoAppState extends State<TodoApp> {
                           // text
                           Text("Go to the gym",
                             style: TextStyle(
-                                fontSize: 16.0, color: _textColor, fontWeight: FontWeight.w400),
+                                fontSize: 16.0,
+                                color: modeChange? _textColor: _normalModeTextColor,
+                                fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
@@ -383,26 +487,33 @@ class _TodoAppState extends State<TodoApp> {
                   topLeft: Radius.circular(40.0),
                   topRight: Radius.circular(40.0),
                 ),
-                color: _containerColor,
+                color: modeChange? _containerColor : _normalModeContainerColor,
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   IconButton(
-                    onPressed: (){},
-                    icon: Icon(Icons.home, size: 36.0, color: _textColor),
+                    onPressed: (){
+                      setState(() {
+                        // dark mode - normal mode
+                        modeChange = !modeChange;
+                      });
+                    },
+                    icon: Icon(Icons.home,
+                        size: 36.0, color: modeChange? _textColor : _normalModeTextColor),
                   ),
 
                   FloatingActionButton(
                     onPressed: (){},
-                    backgroundColor: habitColor[1],
+                    backgroundColor: habitList[1].color,
                     child: Icon(Icons.add, size: 28.0, color: _textColor),
                   ),
 
                   IconButton(
                     onPressed: (){},
-                    icon: Icon(Icons.person, size: 36.0, color: _textColor),
+                    icon: Icon(Icons.person,
+                        size: 36.0, color: modeChange? _textColor : _normalModeTextColor),
                   ),
                 ],
               ),
@@ -413,3 +524,41 @@ class _TodoAppState extends State<TodoApp> {
     );
   }
 }
+
+class HabitList {
+  Color color;
+  IconData icon;
+  String title;
+  double percent;
+  String sheets;
+
+  HabitList({this.color, this.icon, this.title, this.percent, this.sheets});
+}
+
+List<HabitList> habitList = [
+  HabitList(color: Color.fromRGBO(68, 63, 121, 1), icon: Icons.library_books, title: "Reading", percent: 0.8, sheets: "156 Sheets"),
+  HabitList(color: Color.fromRGBO(224, 124, 124, 1), icon: Icons.directions_walk, title: "Walking", percent: 1.5, sheets: "3567 Steps"),
+  HabitList(color: Color.fromRGBO(242, 162, 101, 1), icon: Icons.watch, title: "Watching", percent: 1, sheets: "20 Movies"),
+  //
+  HabitList(color: Color.fromRGBO(68, 63, 121, 1), icon: Icons.library_books, title: "Reading", percent: 0.8, sheets: "156 Sheets"),
+  HabitList(color: Color.fromRGBO(224, 124, 124, 1), icon: Icons.directions_walk, title: "Walking", percent: 1.5, sheets: "3567 Steps"),
+  HabitList(color: Color.fromRGBO(242, 162, 101, 1), icon: Icons.watch, title: "Watching", percent: 1, sheets: "20 Movies"),
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
