@@ -29,207 +29,265 @@ class _TodoAppState extends State<TodoApp> {
     return Scaffold(
       backgroundColor: _backgroundColor,
       // body
-      body: Padding(
-        padding: EdgeInsets.all(padding),
-        child: Column(
-          children: <Widget>[
-            // appbar title
-            SafeArea(
-              top: true,
-              left: true,
-              right: true,
-              child: Container(
-                alignment: Alignment.centerLeft,
-                height: 120.0,
-                child: Text(
-                  title,
-                  style: TextStyle(
-                      fontSize: 32.0,
-                      color: _textColor,
-                      fontWeight: FontWeight.bold),
+      body: Stack(
+        children: <Widget>[
+          // content
+          Padding(
+            padding: EdgeInsets.all(padding),
+            child: Column(
+              children: <Widget>[
+                // appbar title
+                SafeArea(
+                  top: true,
+                  left: true,
+                  right: true,
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    height: 120.0,
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          fontSize: 32.0,
+                          color: _textColor,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
-              ),
-            ),
 
-            // pick date
-            Container(
-              padding: EdgeInsets.all(padding * 0.5),
-              height: 100.0,
+                // pick date
+                Container(
+                  padding: EdgeInsets.all(padding * 0.5),
+                  height: 100.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(40.0),
+                    color: _containerColor,
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Flexible(
+                        fit: FlexFit.tight,
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: 52.0,
+                              width: 52.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: habitColor[1].withOpacity(0.8),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "2",
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: _textColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "Mon",
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: _textColor,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Flexible(
+                        fit: FlexFit.tight,
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: 52.0,
+                              width: 52.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: habitColor[1].withOpacity(0.8),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "3",
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: _textColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "Tue",
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: _textColor,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      SizedBox(width: padding * 0.5),
+
+                      Flexible(
+                        fit: FlexFit.tight,
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: 56.0,
+                              width: 56.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16.0),
+                                color: habitColor[1],
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "4",
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: _textColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "Wed",
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: _textColor,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+
+
+                      SizedBox(width: padding * 0.5),
+
+                      Flexible(
+                        fit: FlexFit.tight,
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: 52.0,
+                              width: 52.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: habitColor[1].withOpacity(0.8),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "5",
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: _textColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "Thu",
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: _textColor,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Flexible(
+                        fit: FlexFit.tight,
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: 52.0,
+                              width: 52.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: habitColor[1].withOpacity(0.8),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "6",
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: _textColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "Fri",
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: _textColor,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+               // your habits
+               Container(
+                 height: 250.0,
+                 child: Placeholder(),
+               ),
+
+                // today's tasks
+                Container(
+                  height: 250.0,
+                  child: Placeholder(),
+                ),
+
+
+              ],
+            ),
+          ),
+
+          // bottom
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: padding *2),
+              height: 64.0,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40.0),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40.0),
+                  topRight: Radius.circular(40.0),
+                ),
                 color: _containerColor,
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 52.0,
-                          width: 52.0,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: habitColor[1].withOpacity(0.8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "2",
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: _textColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "Mon",
-                          style: TextStyle(
-                              fontSize: 12.0,
-                              color: _textColor,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
+                  IconButton(
+                    onPressed: (){},
+                    icon: Icon(Icons.home, size: 36.0, color: _textColor),
                   ),
 
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 52.0,
-                          width: 52.0,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: habitColor[1].withOpacity(0.8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "3",
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: _textColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "Tue",
-                          style: TextStyle(
-                              fontSize: 12.0,
-                              color: _textColor,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
+                  FloatingActionButton(
+                    onPressed: (){},
+                    backgroundColor: habitColor[1],
+                    child: Icon(Icons.add, size: 28.0, color: _textColor),
                   ),
 
-                  SizedBox(width: padding * 0.5),
-
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 56.0,
-                          width: 56.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16.0),
-                            color: habitColor[1],
-                          ),
-                          child: Center(
-                            child: Text(
-                              "4",
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: _textColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "Wed",
-                          style: TextStyle(
-                              fontSize: 12.0,
-                              color: _textColor,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
-                  ),
-
-
-                  SizedBox(width: padding * 0.5),
-
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 52.0,
-                          width: 52.0,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: habitColor[1].withOpacity(0.8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "5",
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: _textColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "Thu",
-                          style: TextStyle(
-                              fontSize: 12.0,
-                              color: _textColor,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  Flexible(
-                    fit: FlexFit.tight,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          height: 52.0,
-                          width: 52.0,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: habitColor[1].withOpacity(0.8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "6",
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: _textColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "Fri",
-                          style: TextStyle(
-                              fontSize: 12.0,
-                              color: _textColor,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
+                  IconButton(
+                    onPressed: (){},
+                    icon: Icon(Icons.person, size: 36.0, color: _textColor),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
