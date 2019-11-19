@@ -12,7 +12,7 @@ class _TodoAppState extends State<TodoApp> {
   bool modeChange = false; // normal
 
   // change color
-  bool modeColor = false;
+  bool colorChange = false;
 
   // Darkmode - Color list
   Color _backgroundColor = Color.fromRGBO(46, 46, 46, 1);
@@ -27,7 +27,7 @@ class _TodoAppState extends State<TodoApp> {
   // title
   String title = "Good evening,\nJack";
 
-  double padding = 24.0;
+  double padding = 12.0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +45,9 @@ class _TodoAppState extends State<TodoApp> {
                 left: true,
                 right: true,
                 child: Container(
-                  padding: EdgeInsets.only(top: padding, left: padding, right: padding),
+                  padding: EdgeInsets.only(left: padding, right: padding),
                   alignment: Alignment.centerLeft,
-                  height: 120.0,
+                  height: 100.0,
                   child: Text(
                     title,
                     style: TextStyle(
@@ -82,7 +82,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 52.0,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: habitList[1].color.withOpacity(0.8),
+                              color: colorChange? habitList[0].color.withOpacity(0.8) : habitList[1].color.withOpacity(0.8),
                             ),
                             child: Center(
                               child: Text(
@@ -116,7 +116,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 52.0,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: habitList[1].color.withOpacity(0.8),
+                              color: colorChange? habitList[0].color.withOpacity(0.8) : habitList[1].color.withOpacity(0.8),
                             ),
                             child: Center(
                               child: Text(
@@ -152,7 +152,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 56.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16.0),
-                              color: habitList[1].color,
+                              color: colorChange? habitList[0].color : habitList[1].color,
                             ),
                             child: Center(
                               child: Text(
@@ -189,7 +189,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 52.0,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: habitList[1].color.withOpacity(0.8),
+                              color: colorChange? habitList[0].color : habitList[1].color,
                             ),
                             child: Center(
                               child: Text(
@@ -223,7 +223,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 52.0,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: habitList[1].color.withOpacity(0.8),
+                              color: colorChange? habitList[0].color.withOpacity(0.8) : habitList[1].color.withOpacity(0.8),
                             ),
                             child: Center(
                               child: Text(
@@ -253,7 +253,7 @@ class _TodoAppState extends State<TodoApp> {
              Container(
                padding: EdgeInsets.only(left: padding),
 //               margin: EdgeInsets.only(top: padding),
-               height: 220.0,
+               height: 190.0,
                child: Column(
                  children: <Widget>[
                    Row(
@@ -273,7 +273,7 @@ class _TodoAppState extends State<TodoApp> {
                          width: 24.0,
                          decoration: BoxDecoration(
                            shape: BoxShape.circle,
-                           color: habitList[1].color,
+                           color: colorChange? habitList[0].color : habitList[1].color,
                          ),
                          child: Center(
                              child: Icon(Icons.add, size: 16.0, color: _textColor)),
@@ -283,16 +283,16 @@ class _TodoAppState extends State<TodoApp> {
 
                    // listview
                    Container(
-                     height: 189.0,
+                     height: 160.0,
                      child: ListView.builder(
-                         padding: EdgeInsets.only(top: padding *0.5),
+                         padding: EdgeInsets.only(top: padding),
                          scrollDirection: Axis.horizontal,
                          itemCount: habitList.length,
                          shrinkWrap: true,
                          itemBuilder: (BuildContext context, int index){
                            return Container(
                              padding: EdgeInsets.all(padding),
-                             margin: EdgeInsets.only(right: padding * 0.5),
+                             margin: EdgeInsets.only(right: padding *2),
                              width: 150.0,
                              decoration: BoxDecoration(
                                borderRadius: BorderRadius.circular(40.0),
@@ -311,7 +311,7 @@ class _TodoAppState extends State<TodoApp> {
                                      color: Colors.black12,
                                    ),
                                    child: Center(
-                                       child: Icon(habitList[index].icon, size: 28.0, color: _textColor)),
+                                       child: Icon(habitList[index].icon, size: 24.0, color: _textColor)),
                                  ),
 
                                  Spacer(),
@@ -354,7 +354,7 @@ class _TodoAppState extends State<TodoApp> {
               Container(
                 padding: EdgeInsets.only(left: padding, right: padding),
                 margin: EdgeInsets.only(top: padding),
-                height: 220.0,
+                height: 190.0,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -370,7 +370,7 @@ class _TodoAppState extends State<TodoApp> {
                     // container
                     Container(
                       padding: EdgeInsets.all(padding * 0.5),
-                      height: 52.0,
+                      height: 44.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40.0),
                         color: modeChange? _containerColor : _normalModeContainerColor,
@@ -384,7 +384,7 @@ class _TodoAppState extends State<TodoApp> {
                             width: 28.0,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
-                              color: habitList[1].color,
+                              color: colorChange? habitList[0].color : habitList[1].color,
                             ),
                             child: Center(
                                 child: Icon(Icons.check, size: 24.0, color: _textColor),
@@ -403,7 +403,7 @@ class _TodoAppState extends State<TodoApp> {
 
                     Container(
                       padding: EdgeInsets.all(padding * 0.5),
-                      height: 52.0,
+                      height: 44.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40.0),
                         color: modeChange? _containerColor : _normalModeContainerColor,
@@ -418,7 +418,7 @@ class _TodoAppState extends State<TodoApp> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
-                                  color: habitList[1].color,
+                                  color: colorChange? habitList[0].color : habitList[1].color,
                                 width: 2.0
                               ),
                             ),
@@ -437,7 +437,7 @@ class _TodoAppState extends State<TodoApp> {
 
                     Container(
                       padding: EdgeInsets.all(padding * 0.5),
-                      height: 52.0,
+                      height: 44.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40.0),
                         color: modeChange? _containerColor : _normalModeContainerColor,
@@ -452,7 +452,7 @@ class _TodoAppState extends State<TodoApp> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
-                                  color: habitList[1].color,
+                                  color: colorChange? habitList[0].color : habitList[1].color,
                                   width: 2.0
                               ),
                             ),
@@ -481,7 +481,7 @@ class _TodoAppState extends State<TodoApp> {
             bottom: 0,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: padding *2),
-              height: 64.0,
+              height: 48.0,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40.0),
@@ -505,13 +505,21 @@ class _TodoAppState extends State<TodoApp> {
                   ),
 
                   FloatingActionButton(
-                    onPressed: (){},
-                    backgroundColor: habitList[1].color,
+                    onPressed: (){
+                      //
+                    },
+                    backgroundColor:
+    colorChange? habitList[0].color : habitList[1].color,
                     child: Icon(Icons.add, size: 28.0, color: _textColor),
                   ),
 
                   IconButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      setState(() {
+                        // change color : habitlist[0].color - habitlist[1].color
+                        colorChange = !colorChange;
+                      });
+                    },
                     icon: Icon(Icons.person,
                         size: 36.0, color: modeChange? _textColor : _normalModeTextColor),
                   ),
