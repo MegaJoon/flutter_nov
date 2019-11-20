@@ -69,3 +69,23 @@ flutter:
     - family: Hanson-Bold
       fonts:
         - asset: fonts/Hanson-Bold.ttf
+    - family: San Marino Beach
+      fonts:
+       - asset: fonts/San Marino Beach.otf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

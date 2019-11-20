@@ -19,7 +19,6 @@ import '1113/second_travel_community_app.dart';
 import '1113/travel_community_app.dart';
 import '1115/yakuza.dart';
 import 'package:flutter_nov/1116/delivery.dart';
-import 'package:flutter_nov/1117/firebase_example.dart';
 import 'package:flutter_nov/1117/payment_app.dart';
 import 'package:flutter_nov/1117/wines_app.dart';
 
