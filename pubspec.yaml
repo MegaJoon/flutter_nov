@@ -60,6 +60,7 @@ flutter:
     - assets/the_hustle.jpg
     - assets/joker.jpg
     - assets/joker_background.jpg
+    - assets/fitness_image.PNG
 
   uses-material-design: true
   fonts:
