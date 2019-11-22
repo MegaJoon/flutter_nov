@@ -6,6 +6,7 @@ import 'package:flutter_nov/1119/todo_app.dart';
 import 'package:flutter_nov/1120/concept_medium.dart';
 import 'package:flutter_nov/1120/fitness_companion_app.dart';
 import 'package:flutter_nov/1121/custom_emoji_slider.dart';
+import 'package:flutter_nov/1122/dark_mode_switch.dart';
 
 import '1106/reminders_mobile_app.dart';
 import '1107/instagram_app.dart';
@@ -52,7 +53,8 @@ class MyApp extends StatelessWidget {
 //      home: MovieApp(),  // 11-19
 //      home: ConceptMedium(),  // 11-20
 //      home: FitnessCompanionApp(),  // 11-20
-      home: CustomEmojiSliders(),  // 11-21
-  );
+//      home: CustomEmojiSliders(), // 11-21
+      home: DarkModeSwitch(), // 11-22
+    );
   }
 }
