@@ -61,6 +61,10 @@ flutter:
     - assets/joker.jpg
     - assets/joker_background.jpg
     - assets/fitness_image.PNG
+    - assets/mcdonald_icon.PNG
+    - assets/burger1.png
+    - assets/burger2.png
+    - assets/burger3.png
 
   uses-material-design: true
   fonts:
