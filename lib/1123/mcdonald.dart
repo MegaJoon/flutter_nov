@@ -34,12 +34,6 @@ class _McDonaldAppState extends State<McDonaldApp> {
 
   void _removeItem(int index) {
     setState(() {
-//      _listKey.currentState.removeItem(0,
-//        (context, animation) => _buildItem(context, 0, animation),
-//        duration: Duration(milliseconds: 200),
-//      );
-//      _data.removeAt(index);
-
       _listKey.currentState.removeItem(
         index, (context, animation) => _buildItem(context, 0, animation),
         duration: Duration(milliseconds: 200),
