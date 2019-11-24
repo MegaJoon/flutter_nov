@@ -39,6 +39,7 @@ class _McDonaldAppState extends State<McDonaldApp> {
   // onClick event
   void _onTapItem(int index) {
     setState(() {
+      print("index = $index");
       burgerItemList[index].isSelected = !burgerItemList[index].isSelected;
       burgerItemList[index].isSelected ? _addItem(index) : _removeItem(index);
     });
@@ -84,7 +85,7 @@ class _McDonaldAppState extends State<McDonaldApp> {
         child: Center(
           child: _data.length > 0
               ? Container(
-                  height: 150.0,
+                  height: 120.0,
                   width: 120.0 - padding * 2,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -225,10 +226,9 @@ class _McDonaldAppState extends State<McDonaldApp> {
                     children: <Widget>[
                       // appbar
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: padding * 1.5),
                         margin: EdgeInsets.only(bottom: padding),
                         alignment: Alignment.centerLeft,
-                        height: 80.0,
+                        height: 32.0,
                         child: Image.asset(_iconImage, fit: BoxFit.contain),
                       ),
 
@@ -236,7 +236,7 @@ class _McDonaldAppState extends State<McDonaldApp> {
                       Container(
                         margin: EdgeInsets.only(bottom: padding),
                         alignment: Alignment.centerLeft,
-                        height: 80.0,
+                        height: 48.0,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -247,7 +247,7 @@ class _McDonaldAppState extends State<McDonaldApp> {
                             ),
                             Text(
                               "what's up?",
-                              style: TextStyle(fontSize: 24.0, color: Colors.black, fontWeight: FontWeight.w300),
+                              style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.w300),
                             ),
                           ],
                         ),
@@ -255,7 +255,7 @@ class _McDonaldAppState extends State<McDonaldApp> {
 
                       // tabbar
                       Container(
-                        margin: EdgeInsets.only(bottom: padding * 3),
+                        margin: EdgeInsets.only(bottom: padding * 2),
                         height: 400.0,
                         child: GridView.builder(
                           physics: NeverScrollableScrollPhysics(),
@@ -304,10 +304,9 @@ class _McDonaldAppState extends State<McDonaldApp> {
                   children: <Widget>[
                     // appbar
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: padding * 1.5),
                       margin: EdgeInsets.only(bottom: padding),
                       alignment: Alignment.centerRight,
-                      height: 80.0,
+                      height: 32.0,
                       child: Container(
                         width: 32.0,
                         decoration: BoxDecoration(
@@ -322,20 +321,20 @@ class _McDonaldAppState extends State<McDonaldApp> {
 
                     // title
                     Container(
-                      margin: EdgeInsets.only(bottom: padding),
+                      margin: EdgeInsets.only(bottom: padding *0.5),
                       alignment: Alignment.centerLeft,
-                      height: 80.0,
+                      height: 48.0,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
                             "My\nOrder",
-                            style: TextStyle(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 14.0, color: Colors.black, fontWeight: FontWeight.bold),
                           ),
+                          Spacer(),
                           Text(
                             "Take Out",
-                            style: TextStyle(fontSize: 10.0, color: Colors.grey, fontWeight: FontWeight.w600),
+                            style: TextStyle(fontSize: 10.0, color: Colors.grey, fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
@@ -360,7 +359,7 @@ class _McDonaldAppState extends State<McDonaldApp> {
 
                     // total price & done
                     Container(
-                      height: 180.0,
+                      height: 150.0,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
