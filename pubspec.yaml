@@ -61,10 +61,31 @@ flutter:
     - assets/joker.jpg
     - assets/joker_background.jpg
     - assets/fitness_image.PNG
-    - assets/mcdonald_icon.PNG
-    - assets/burger1.png
-    - assets/burger2.png
-    - assets/burger3.png
+    - assets/mcdonald/icon.PNG
+    - assets/mcdonald/burger00.png
+    - assets/mcdonald/burger01.png
+    - assets/mcdonald/burger02.png
+    - assets/mcdonald/burger03.png
+    - assets/mcdonald/burger04.png
+    - assets/mcdonald/burger05.png
+    - assets/mcdonald/burger10.png
+    - assets/mcdonald/burger11.png
+    - assets/mcdonald/burger12.png
+    - assets/mcdonald/burger13.png
+    - assets/mcdonald/burger14.png
+    - assets/mcdonald/burger15.png
+    - assets/mcdonald/burger16.png
+    - assets/mcdonald/burger17.png
+    - assets/mcdonald/burger18.png
+    - assets/mcdonald/desserts20.png
+    - assets/mcdonald/desserts21.png
+    - assets/mcdonald/desserts22.png
+    - assets/mcdonald/desserts23.png
+    - assets/mcdonald/desserts24.png
+    - assets/mcdonald/desserts25.png
+    - assets/mcdonald/desserts26.png
+    - assets/mcdonald/desserts27.png
+    - assets/mcdonald/desserts28.png
 
   uses-material-design: true
   fonts:
