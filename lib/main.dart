@@ -8,7 +8,6 @@ import 'package:flutter_nov/1120/fitness_companion_app.dart';
 import 'package:flutter_nov/1121/custom_emoji_slider.dart';
 import 'package:flutter_nov/1122/dark_mode_switch.dart';
 import 'package:flutter_nov/1123/mcdonald_app.dart';
-import 'package:flutter_nov/1125/anthropologie_app.dart';
 import 'package:flutter_nov/1125/subscription_view_app.dart';
 
 import '1106/reminders_mobile_app.dart';
@@ -59,8 +58,7 @@ class MyApp extends StatelessWidget {
 //      home: CustomEmojiSliders(), // 11-21
 //      home: DarkModeSwitch(), // 11-22
 //      home: McDonaldApp(), // 11-23, 4
-//      home: SubscriptionViewApp(), // 11-25
-      home: AnthropologieApp(), // 11-25
+      home: SubscriptionViewApp(), // 11-25
     );
   }
 }

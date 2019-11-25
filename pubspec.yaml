@@ -87,6 +87,9 @@ flutter:
     - assets/mcdonald/desserts27.png
     - assets/mcdonald/desserts28.png
     - assets/subscription_image.png
+    - assets/candle.png
+    - assets/candle1.png
+    - assets/candle2.png
 
   uses-material-design: true
   fonts:
