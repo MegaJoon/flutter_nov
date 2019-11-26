@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_nov/1126/custom_bottom_item.dart';
+import 'package:flutter_nov/1126/detail_payment_page.dart';
+import 'package:flutter_nov/1126/tool_list.dart';
 
 // https://dribbble.com/shots/8520413-mbaiar-Payment-App/attachments/803646?mode=media
 
@@ -34,7 +36,7 @@ class _MbaiarPaymentAppState extends State<MbaiarPaymentApp> {
               children: <Widget>[
                 // appbar
                 Container(
-                  height: 150.0,
+                  height: 180.0,
                   child: Stack(
                     children: <Widget>[
                       // indigo color container
@@ -42,7 +44,7 @@ class _MbaiarPaymentAppState extends State<MbaiarPaymentApp> {
                         top: 0,
                         left: 0,
                         right: 0,
-                        bottom: 20.0,
+                        bottom: 24.0,
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: padding),
                           decoration: BoxDecoration(
@@ -61,19 +63,24 @@ class _MbaiarPaymentAppState extends State<MbaiarPaymentApp> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Icon(Icons.menu, size: 20.0, color: Colors.white),
+                                    IconButton(
+                                      onPressed: (){},
+                                      icon: Icon(Icons.menu, size: 16.0, color: Colors.white),
+                                    ),
                                     Text(title,
                                       style: TextStyle(
                                         fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    Icon(Icons.search, size: 20.0, color: Colors.white),
+                                    IconButton(
+                                      onPressed: (){},
+                                      icon: Icon(Icons.search, size: 16.0, color: Colors.white),
+                                    ),
                                   ],
                                 ),
 
                                 // bottom : profile image
                                 Container(
-                                  margin: EdgeInsets.only(top: padding *0.5),
                                   height: 40.0,
                                   child: Row(
                                     children: <Widget>[
@@ -121,7 +128,7 @@ class _MbaiarPaymentAppState extends State<MbaiarPaymentApp> {
                         right: padding,
                         bottom: 0,
                         child: Container(
-                          height: 40.0,
+                          height: 48.0,
                           child: Row(
                             children: <Widget>[
                               Flexible(
@@ -195,7 +202,7 @@ class _MbaiarPaymentAppState extends State<MbaiarPaymentApp> {
                 // main box
                 Container(
                   padding: EdgeInsets.only(top: padding, left: padding),
-                  height: 600.0,
+                  height: 570.0,
                   child: Column(
                     children: <Widget>[
                       // tabbar
@@ -353,20 +360,25 @@ class _MbaiarPaymentAppState extends State<MbaiarPaymentApp> {
                                       ),
 
                                       // top arrow
-                                      toolList[index].isSelected? Container(
-                                        margin: EdgeInsets.only(right: padding),
-                                        height: 32.0,
-                                        width: 32.0,
-                                        decoration: BoxDecoration(
-                                          color: Colors.green,
-                                          borderRadius: BorderRadius.circular(4.0),
-                                          boxShadow: [BoxShadow(
-                                            color: Colors.black12,
-                                            blurRadius: 1,
-                                            spreadRadius: 1,
-                                          )],
+                                      toolList[index].isSelected? InkWell(
+                                        onTap: (){
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPaymentPage(index)));
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.only(right: padding),
+                                          height: 32.0,
+                                          width: 32.0,
+                                          decoration: BoxDecoration(
+                                            color: Colors.green,
+                                            borderRadius: BorderRadius.circular(4.0),
+                                            boxShadow: [BoxShadow(
+                                              color: Colors.black12,
+                                              blurRadius: 1,
+                                              spreadRadius: 1,
+                                            )],
+                                          ),
+                                          child: Center(child: Icon(Icons.arrow_upward, size: 24.0, color: Colors.white)),
                                         ),
-                                        child: Center(child: Icon(Icons.arrow_upward, size: 24.0, color: Colors.white)),
                                       ) : Container(),
                                     ],
                                   ),
@@ -447,33 +459,6 @@ class _MbaiarPaymentAppState extends State<MbaiarPaymentApp> {
     );
   }
 }
-
-class ToolList {
-  String image;
-  String tool;
-  String time;
-  bool isSelected;
-
-  ToolList({this.image, this.tool, this.time, this.isSelected});
-}
-
-List<ToolList> toolList = [
-  ToolList(image: "assets/tool/youtube.png", tool: "Youtube Premium", time: "Expired 2 days ago", isSelected: true),
-  ToolList(image: "assets/tool/netflix.png", tool: "Netflix", time: "Expires on 10/22/19 - 3 days left", isSelected: false),
-  ToolList(image: "assets/tool/spotify.png", tool: "Spotify", time: "Expires on 10/27/19 - 8 days left", isSelected: false),
-  ToolList(image: "assets/tool/adobe.png", tool: "Adobe Cloud Creative", time: "Expires on 10/27/19 - 8 days left", isSelected: false),
-  ToolList(image: "assets/tool/photoshop.png", tool: "Photoshop CC 2020", time: "Expires on 10/27/19 - 8 days left", isSelected: false),
-  ToolList(image: "assets/tool/dropbox.png", tool: "Dropbox", time: "Expires on 10/27/19 - 8 days left", isSelected: false),
-
-  //
-  ToolList(image: "assets/tool/youtube.png", tool: "Youtube Premium", time: "Expired 2 days ago", isSelected: false),
-  ToolList(image: "assets/tool/netflix.png", tool: "Netflix", time: "Expires on 10/22/19 - 3 days left", isSelected: false),
-  ToolList(image: "assets/tool/spotify.png", tool: "Spotify", time: "Expires on 10/27/19 - 8 days left", isSelected: false),
-  ToolList(image: "assets/tool/adobe.png", tool: "Adobe Cloud Creative", time: "Expires on 10/27/19 - 8 days left", isSelected: false),
-  ToolList(image: "assets/tool/photoshop.png", tool: "Photoshop CC 2020", time: "Expires on 10/27/19 - 8 days left", isSelected: false),
-  ToolList(image: "assets/tool/dropbox.png", tool: "Dropbox", time: "Expires on 10/27/19 - 8 days left", isSelected: false),
-];
-
 
 
 
