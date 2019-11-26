@@ -10,6 +10,7 @@ import 'package:flutter_nov/1122/dark_mode_switch.dart';
 import 'package:flutter_nov/1123/mcdonald_app.dart';
 import 'package:flutter_nov/1125/subscription_view_app.dart';
 import 'package:flutter_nov/1126/mbaiar_payment_app.dart';
+import 'package:flutter_nov/1127/clothes_line_page.dart';
 
 import '1106/reminders_mobile_app.dart';
 import '1107/instagram_app.dart';
@@ -59,7 +60,8 @@ class MyApp extends StatelessWidget {
 //      home: DarkModeSwitch(), // 11-22
 //      home: McDonaldApp(), // 11-23, 4
 //      home: SubscriptionViewApp(), // 11-25
-      home: MbaiarPaymentApp(), // 11-26
+//      home: MbaiarPaymentApp(), // 11-26
+      home: ClotheslinePage(), // 11-27
     );
   }
 }

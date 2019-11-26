@@ -96,6 +96,7 @@ flutter:
     - assets/tool/adobe.png
     - assets/tool/photoshop.png
     - assets/tool/dropbox.png
+    - assets/clothesline.png
 
   uses-material-design: true
   fonts:
