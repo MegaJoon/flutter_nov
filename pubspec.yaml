@@ -90,6 +90,12 @@ flutter:
     - assets/candle.png
     - assets/candle1.png
     - assets/candle2.png
+    - assets/tool/youtube.png
+    - assets/tool/netflix.png
+    - assets/tool/spotify.png
+    - assets/tool/adobe.png
+    - assets/tool/photoshop.png
+    - assets/tool/dropbox.png
 
   uses-material-design: true
   fonts:

@@ -9,6 +9,7 @@ import 'package:flutter_nov/1121/custom_emoji_slider.dart';
 import 'package:flutter_nov/1122/dark_mode_switch.dart';
 import 'package:flutter_nov/1123/mcdonald_app.dart';
 import 'package:flutter_nov/1125/subscription_view_app.dart';
+import 'package:flutter_nov/1126/mbaiar_payment_app.dart';
 
 import '1106/reminders_mobile_app.dart';
 import '1107/instagram_app.dart';
@@ -24,7 +25,6 @@ import '1113/second_travel_community_app.dart';
 import '1113/travel_community_app.dart';
 import '1115/yakuza.dart';
 import 'package:flutter_nov/1116/delivery.dart';
-import 'package:flutter_nov/1117/payment_app.dart';
 import 'package:flutter_nov/1117/wines_app.dart';
 
 void main() => runApp(MyApp());
@@ -58,7 +58,8 @@ class MyApp extends StatelessWidget {
 //      home: CustomEmojiSliders(), // 11-21
 //      home: DarkModeSwitch(), // 11-22
 //      home: McDonaldApp(), // 11-23, 4
-      home: SubscriptionViewApp(), // 11-25
+//      home: SubscriptionViewApp(), // 11-25
+      home: MbaiarPaymentApp(), // 11-26
     );
   }
 }
