@@ -97,6 +97,10 @@ flutter:
     - assets/tool/photoshop.png
     - assets/tool/dropbox.png
     - assets/clothesline.png
+    - assets/starbucks/background_image.png
+    - assets/starbucks/sandwich.png
+    - assets/starbucks/flavour.png
+    - assets/starbucks/frappuchino.png
 
   uses-material-design: true
   fonts:
@@ -109,6 +113,12 @@ flutter:
     - family: San Marino Beach
       fonts:
        - asset: fonts/San Marino Beach.otf
+    - family: gibson-bold
+      fonts:
+       - asset: fonts/gibson-bold.ttf
+    - family: Gibson-Regular
+      fonts:
+       - asset: fonts/Gibson-Regular.ttf
 
 
 
