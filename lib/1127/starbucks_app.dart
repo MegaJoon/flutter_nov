@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nov/1127/blend_page.dart';
 import 'package:flutter_nov/1127/custom_tab.dart';
 import 'package:flutter_nov/1127/starbuck_list.dart';
 
@@ -260,64 +261,69 @@ class _StarbucksAppState extends State<StarbucksApp> {
                     left: 32.0,
                     right: 0,
                     bottom: 32.0,
-                    child: Container(
-                      padding: EdgeInsets.all(padding * 0.8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(16.0),
-                          bottomLeft: Radius.circular(16.0),
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => BlendPage(index)));
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(padding * 0.8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(16.0),
+                            bottomLeft: Radius.circular(16.0),
+                          ),
+                          color: startbucks[index].color,
                         ),
-                        color: startbucks[index].color,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          // title & icon
-                          Row(
-                            children: <Widget>[
-                              Text(
-                                startbucks[index].title.toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: "Gibson-Regular",
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            // title & icon
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  startbucks[index].title.toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: "Gibson-Regular",
+                                  ),
                                 ),
-                              ),
-                              Spacer(),
-                              Icon(
-                                Icons.favorite_border,
-                                size: 20.0,
+                                Spacer(),
+                                Icon(
+                                  Icons.favorite_border,
+                                  size: 20.0,
+                                  color: Colors.white,
+                                ),
+                              ],
+                            ),
+
+                            // subtitle
+                            Text(
+                              startbucks[index].subTitle,
+                              style: TextStyle(
+                                fontSize: 12.0,
                                 color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: "Gibson-Regular",
                               ),
-                            ],
-                          ),
-
-                          // subtitle
-                          Text(
-                            startbucks[index].subTitle,
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "Gibson-Regular",
                             ),
-                          ),
 
-                          Spacer(),
+                            Spacer(),
 
-                          // price
-                          Text(
-                            startbucks[index].price,
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: "Gibson-Regular",
+                            // price
+                            Text(
+                              startbucks[index].price,
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "Gibson-Regular",
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -350,11 +356,14 @@ class _StarbucksAppState extends State<StarbucksApp> {
                   Positioned(
                     bottom: -20.0,
                     right: -40.0,
-                    child: Image.asset(
-                      startbucks[index].image,
-                      fit: BoxFit.cover,
-                      height: 180.0,
-                      width: 180.0,
+                    child: Hero(
+                      tag: "starbucks $index",
+                      child: Image.asset(
+                        startbucks[index].image,
+                        fit: BoxFit.cover,
+                        height: 180.0,
+                        width: 180.0,
+                      ),
                     ),
                   ),
                 ],
