@@ -4,7 +4,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -17,6 +17,7 @@ dependencies:
   scrollable_bottom_sheet: ^0.2.1
   dots_indicator: ^1.1.0
   cloud_firestore: ^0.12.10
+  google_maps_flutter: ^0.5.21+7
 
 dev_dependencies:
   flutter_test:
@@ -101,6 +102,9 @@ flutter:
     - assets/starbucks/sandwich.png
     - assets/starbucks/flavour.png
     - assets/starbucks/frappuchino.png
+    - assets/blu/blu.jpg
+    - assets/blu/blu1.jpg
+    - assets/blu/blu2.jpg
 
   uses-material-design: true
   fonts:
