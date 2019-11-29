@@ -109,6 +109,8 @@ flutter:
     - assets/blu/blu_back1.jpg
     - assets/blu/blu_back2.jpg
     - assets/blu/biu_icon.png
+    - assets/binder_ring.png
+    - assets/shoulder_muscle.png
 
   uses-material-design: true
   fonts:

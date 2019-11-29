@@ -12,7 +12,8 @@ import 'package:flutter_nov/1125/subscription_view_app.dart';
 import 'package:flutter_nov/1126/mbaiar_payment_app.dart';
 import 'package:flutter_nov/1127/clothes_line_page.dart';
 import 'package:flutter_nov/1127/starbucks_app.dart';
-import 'package:flutter_nov/1128/biutimi_app.dart';
+import 'package:flutter_nov/1128/biutimi.dart';
+import 'package:flutter_nov/1129/medical_app.dart';
 
 import '1106/reminders_mobile_app.dart';
 import '1107/instagram_app.dart';
@@ -65,7 +66,8 @@ class MyApp extends StatelessWidget {
 //      home: MbaiarPaymentApp(), // 11-26
 //      home: ClotheslinePage(), // 11-27
 //      home: StarbucksApp(), // 11-27
-      home: BiutimiApp(), // 11-28
+//      home: BiutimiApp(), // 11-28
+      home: MedicalApp(), // 11-29
     );
   }
 }
