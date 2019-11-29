@@ -1,14 +1,10 @@
 import 'dart:async';
-import 'dart:typed_data';
-import 'dart:ui' as ui;
 
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_nov/1128/blu_item_list.dart';
 import 'package:flutter_nov/1128/item_detail_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:path_drawing/path_drawing.dart';
 
 // https://dribbble.com/shots/6586954-Biutimi-App/attachments
 
@@ -27,6 +23,8 @@ class _BiutimiAppState extends State<BiutimiApp> {
   double padding = 16.0;
   double bottomPadding = 16.0;
 
+  int currentIndex = 0;  // listview index
+
   // container color
   Color _color = Color.fromRGBO(86, 238, 173, 1);
 
@@ -34,6 +32,8 @@ class _BiutimiAppState extends State<BiutimiApp> {
   LatLng _initialPosition = LatLng(37.50573803291112, 126.9531999345871);
 
   List<Marker> markers = <Marker>[];
+
+  ScrollController
 
   // function add mark
   void _addMark(){
@@ -158,7 +158,7 @@ class _BiutimiAppState extends State<BiutimiApp> {
           AnimatedPositioned(
             duration: Duration(milliseconds: 400),
             curve: Curves.fastOutSlowIn,
-            left: padding,
+            left: 0,
             right: 0,
             bottom: bottomPadding,
             child: Container(
@@ -167,7 +167,7 @@ class _BiutimiAppState extends State<BiutimiApp> {
                 children: <Widget>[
                   // what is container??
                   Container(
-                    margin: EdgeInsets.only(right: padding),
+                    margin: EdgeInsets.symmetric(horizontal: padding),
                     height: 52.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.0),
@@ -192,129 +192,133 @@ class _BiutimiAppState extends State<BiutimiApp> {
                     ),
                   ),
 
-                  // pageview
+                  // ListView
                   Container(
                     height: 198.0,
                     child: ListView.builder(
                         padding: EdgeInsets.only(top: padding),
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
+                        controller: ,
                         itemCount: bluList.length -1,  // last item : center position
                         itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailPage(index)));
-                            },
-                            child: Container(
-                              margin: EdgeInsets.only(right: padding),
-                              padding: EdgeInsets.symmetric(vertical: padding, horizontal: padding * 1.5),
-                              width: 130.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(4.0),
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black12,
-                                    spreadRadius: 1,
-                                    blurRadius: 1,
-                                  )
-                                ],
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  // profile image
-                                  Container(
-                                    height: 60.0,
-                                    width: 90.0,
-                                    child: Stack(
-                                      children: <Widget>[
-                                        // profile image
-                                        Positioned(
-                                          top: 0,
-                                          left: 10.0,
-                                          right: 10.0,
-                                          bottom: 0,
-                                          child: Hero(
-                                            tag: "item $index",
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                image: DecorationImage(
-                                                  image: AssetImage(bluList[index].profileImage),
-                                                  fit: BoxFit.cover,
+                          return Transform.translate(
+                            offset: Offset(padding, 0.0),
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailPage(index)));
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(right: padding),
+                                padding: EdgeInsets.symmetric(vertical: padding, horizontal: padding * 1.5),
+                                width: 130.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(4.0),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      spreadRadius: 1,
+                                      blurRadius: 1,
+                                    )
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    // profile image
+                                    Container(
+                                      height: 60.0,
+                                      width: 90.0,
+                                      child: Stack(
+                                        children: <Widget>[
+                                          // profile image
+                                          Positioned(
+                                            top: 0,
+                                            left: 10.0,
+                                            right: 10.0,
+                                            bottom: 0,
+                                            child: Hero(
+                                              tag: "item $index",
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    image: AssetImage(bluList[index].profileImage),
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ),
 
-                                        // star icon
-                                        Positioned(
-                                          top: 0,
-                                          right: 0,
-                                          child: Container(
-                                            height: 28.0,
-                                            width: 28.0,
-                                            child: Stack(
-                                              children: <Widget>[
-                                                Positioned.fill(
-                                                  child: Center(
-                                                    child: Icon(Icons.star, size: 28.0, color: Colors.yellow),
+                                          // star icon
+                                          Positioned(
+                                            top: 0,
+                                            right: 0,
+                                            child: Container(
+                                              height: 28.0,
+                                              width: 28.0,
+                                              child: Stack(
+                                                children: <Widget>[
+                                                  Positioned.fill(
+                                                    child: Center(
+                                                      child: Icon(Icons.star, size: 28.0, color: Colors.yellow),
+                                                    ),
                                                   ),
-                                                ),
-                                                Positioned.fill(
-                                                  child: Center(
-                                                    child: Text(
-                                                      "5",
-                                                      style: TextStyle(
-                                                        fontSize: 8.0,
-                                                        color: Colors.white,
-                                                        fontWeight: FontWeight.bold,
+                                                  Positioned.fill(
+                                                    child: Center(
+                                                      child: Text(
+                                                        "5",
+                                                        style: TextStyle(
+                                                          fontSize: 8.0,
+                                                          color: Colors.white,
+                                                          fontWeight: FontWeight.bold,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                        ],
+                                      ),
+                                    ),
+
+                                    // name
+                                    Text(
+                                      bluList[index].name,
+                                      style: TextStyle(
+                                        fontSize: 12.0,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+
+                                    // text
+                                    Text(
+                                      bluList[index].name,
+                                      style: TextStyle(
+                                        fontSize: 10.0,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+
+                                    // icons
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        bluList[index].tag1 ? Icon(FontAwesomeIcons.handScissors, size: 16.0, color: Colors.grey) : Container(),
+                                        bluList[index].tag2 ? Icon(FontAwesomeIcons.lemon, size: 16.0, color: Colors.grey) : Container(),
+                                        bluList[index].tag3 ? Icon(FontAwesomeIcons.codepen, size: 16.0, color: Colors.grey) : Container(),
                                       ],
                                     ),
-                                  ),
-
-                                  // name
-                                  Text(
-                                    bluList[index].name,
-                                    style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-
-                                  // text
-                                  Text(
-                                    bluList[index].name,
-                                    style: TextStyle(
-                                      fontSize: 10.0,
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-
-                                  // icons
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: <Widget>[
-                                      bluList[index].tag1 ? Icon(FontAwesomeIcons.handScissors, size: 16.0, color: Colors.grey) : Container(),
-                                      bluList[index].tag2 ? Icon(FontAwesomeIcons.lemon, size: 16.0, color: Colors.grey) : Container(),
-                                      bluList[index].tag3 ? Icon(FontAwesomeIcons.codepen, size: 16.0, color: Colors.grey) : Container(),
-                                    ],
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           );

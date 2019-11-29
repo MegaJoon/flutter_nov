@@ -105,6 +105,10 @@ flutter:
     - assets/blu/blu.jpg
     - assets/blu/blu1.jpg
     - assets/blu/blu2.jpg
+    - assets/blu/blu_back.jpg
+    - assets/blu/blu_back1.jpg
+    - assets/blu/blu_back2.jpg
+    - assets/blu/biu_icon.png
 
   uses-material-design: true
   fonts:
