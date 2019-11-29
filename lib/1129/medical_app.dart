@@ -245,12 +245,81 @@ class _MedicalAppState extends State<MedicalApp> {
             right: padding,
             bottom: padding,
             child: Container(
+              padding: EdgeInsets.all(padding),
               height: 200.0,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.0),
                 color: Colors.white,
               ),
-              child: Placeholder(),
+              child: Stack(
+                children: <Widget>[
+                  // text, image
+                  Positioned.fill(
+                      child: Column(
+                        children: <Widget>[
+                          Text("Physical Examination",
+                          style: TextStyle(
+                            fontSize: 14.0, color: _color2, fontWeight: FontWeight.w600,
+                          ),
+                          ),
+                          Flexible(
+                              fit: FlexFit.tight,
+                              child: Image.asset("assets/shoulder_muscle.png", fit: BoxFit.fill),
+                          ),
+                        ],
+                      ),
+                  ),
+
+                  // center icon
+                  Positioned.fill(
+                    child: Center(
+                      child: Container(
+                        height: 32.0,
+                        width: 150.0,
+                        decoration: ShapeDecoration(
+                          shape: StadiumBorder(),
+                          color: Colors.white,
+                          shadows: [BoxShadow(
+                            color: Colors.black12,
+                            spreadRadius: 1,
+                            blurRadius: 1,
+                          )],
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Text("Shoulder muscle".toUpperCase(),
+                            style: TextStyle(
+                              fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.w600,
+                            ),
+                            ),
+
+                            Icon(Icons.remove_circle, size: 12.0, color: Colors.grey),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // bottomLeft icon
+                  Positioned(
+                    left: padding,
+                    bottom: padding,
+                    child: Container(
+                      height: 48.0,
+                      width: 48.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.0),
+                        color: _color2,
+                      ),
+                      child: Center(
+                          child: Icon(Icons.insert_drive_file, size: 24.0, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
 
