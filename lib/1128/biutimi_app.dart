@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_nov/1128/blu_item_list.dart';
@@ -23,8 +25,6 @@ class _BiutimiAppState extends State<BiutimiApp> {
   double padding = 16.0;
   double bottomPadding = 16.0;
 
-  int currentIndex = 0;  // listview index
-
   // container color
   Color _color = Color.fromRGBO(86, 238, 173, 1);
 
@@ -33,11 +33,11 @@ class _BiutimiAppState extends State<BiutimiApp> {
 
   List<Marker> markers = <Marker>[];
 
-  ScrollController
-
   // function add mark
-  void _addMark(){
+  void _addMark() async{
     for(int i = 0; i < bluList.length; i++){
+      final Uint8List markerIcon = await getBytesFromCanvas();
+
       markers.add(
           Marker(
             markerId: MarkerId(bluList[i].name),
@@ -47,11 +47,32 @@ class _BiutimiAppState extends State<BiutimiApp> {
               snippet: bluList[i].text,
             ),
 
-            icon: i == bluList.length -1? BitmapDescriptor.defaultMarkerWithHue(60.0) : BitmapDescriptor.defaultMarker,
+//            icon: i == bluList.length -1? BitmapDescriptor.fromBytes(markerIcon) : BitmapDescriptor.defaultMarker,
+            icon: i == bluList.length -1? BitmapDescriptor.fromBytes(markerIcon) : BitmapDescriptor.defaultMarker,
             onTap: (){},
           ),
       );
     }
+  }
+
+  Future<Uint8List> getBytesFromCanvas() async {
+    final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
+    final Canvas canvas = Canvas(pictureRecorder);
+    final Paint paint = Paint();
+    paint.color = Colors.yellow;
+    canvas.drawRRect(
+        RRect.fromRectAndCorners(
+          Rect.fromLTWH(0.0, 0.0, 80.0, 80.0),
+          topLeft: Radius.circular(48.0),
+          topRight: Radius.circular(48.0),
+          bottomLeft: Radius.circular(48.0),
+          bottomRight: Radius.circular(48.0),
+        ),
+        paint);
+
+    final img = await pictureRecorder.endRecording().toImage(80, 80);
+    final data = await img.toByteData(format: ui.ImageByteFormat.png);
+    return data.buffer.asUint8List();
   }
 
   @override
@@ -199,7 +220,6 @@ class _BiutimiAppState extends State<BiutimiApp> {
                         padding: EdgeInsets.only(top: padding),
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
-                        controller: ,
                         itemCount: bluList.length -1,  // last item : center position
                         itemBuilder: (context, index) {
                           return Transform.translate(
