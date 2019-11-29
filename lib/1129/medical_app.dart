@@ -14,6 +14,16 @@ class _MedicalAppState extends State<MedicalApp> {
 
   double padding = 16.0;
 
+  // text
+  // title
+  String title = "Good Morning!";
+  String subTitle = "Eugenia Burke!";
+
+  // doctor
+  String _doctorName = "Dr. Mourice Tyler";
+  String _doctorDepartment = "Physiotherapy";
+  String _doctorHi = "Hi. Eugenio. you can find the first examination\nreport here. And please check our next meet";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,13 +57,13 @@ class _MedicalAppState extends State<MedicalApp> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text("Good Morning!",
+                      Text(title,
                       style: TextStyle(
                         fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.w400,
                       ),
                       ),
 
-                      Text("Eugenia Burke!",
+                      Text(subTitle,
                         style: TextStyle(
                           fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold,
                         ),
@@ -108,11 +118,102 @@ class _MedicalAppState extends State<MedicalApp> {
                     right: 0,
                     bottom: 0,
                     child: Container(
+                      padding: EdgeInsets.all(padding),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16.0),
                         color: Colors.white,
                       ),
-                      child: Placeholder(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          // name
+                          Text(_doctorName,
+                          style: TextStyle(
+                            fontSize: 16.0, color: _color2, fontWeight: FontWeight.w600,
+                          ),
+                          ),
+
+                          // department
+                          Text(_doctorDepartment.toUpperCase(),
+                            style: TextStyle(
+                              fontSize: 12.0, color: Colors.grey, fontWeight: FontWeight.w600,
+                            ),
+                          ),
+
+                          // text
+                          Text(_doctorHi,
+                            style: TextStyle(
+                              fontSize: 12.0, color: Colors.black12, fontWeight: FontWeight.w600,
+                            ),
+                          ),
+
+                          // container
+                          Container(
+                            height: 170.0,
+                            child: GridView.builder(
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  mainAxisSpacing: 4.0,
+                                  crossAxisSpacing: padding,
+                                  childAspectRatio: 2.2
+                                ),
+                                itemCount: 4,
+                                physics: NeverScrollableScrollPhysics(),
+                                padding: EdgeInsets.zero,
+                                itemBuilder: (context, index){
+                                  return Container(
+                                    padding: EdgeInsets.symmetric(horizontal: padding *0.50),
+                                    margin: EdgeInsets.all(4.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [BoxShadow(
+                                        color: Colors.black12,
+                                        spreadRadius: 1,
+                                        blurRadius: 1,
+                                      )],
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: <Widget>[
+                                        // icon
+                                        Icon(medicalList[index].icon, size: 24.0, color: medicalList[index].color),
+
+                                        Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(medicalList[index].data,
+                                          style: TextStyle(
+                                            fontSize: 20.0, color: Colors.lightBlue, fontWeight: FontWeight.w600,
+                                          ),
+                                          ),
+                                        ),
+
+                                        Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(medicalList[index].text.toUpperCase(),
+                                            style: TextStyle(
+                                              fontSize: 14.0, color: Colors.grey, fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }),
+                          ),
+
+                          // checkcomplete report
+                          Align(
+                            alignment: Alignment.center,
+                            child: Text("Check Complete Report",
+                            style: TextStyle(
+                              fontSize: 14.0, color: Colors.lightBlue, fontWeight: FontWeight.w600,
+                            ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
 
@@ -197,7 +298,21 @@ class myClipper extends CustomClipper<Path>{
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
 
+class MedicalList {
+  IconData icon;
+  Color color;
+  String data;
+  String text;
 
+  MedicalList({this.icon, this.color, this.data, this.text});
+}
+
+List<MedicalList> medicalList = [
+  MedicalList(icon: Icons.favorite, color: Colors.red, data: "86", text: "Blood Rate"),
+  MedicalList(icon: Icons.local_dining, color: Colors.orange, data: "122 / 86", text: "Blood pressure"),
+  MedicalList(icon: Icons.wb_sunny, color: Colors.indigo, data: "217", text: "Cholestrol"),
+  MedicalList(icon: Icons.toys, color: Colors.deepPurple, data: "145", text: "Blood sugar"),
+];
 
 
 
