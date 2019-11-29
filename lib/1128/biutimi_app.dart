@@ -34,23 +34,20 @@ class _BiutimiAppState extends State<BiutimiApp> {
   List<Marker> markers = <Marker>[];
 
   // function add mark
-  void _addMark() async{
-    for(int i = 0; i < bluList.length; i++){
+  void _addMark() async {
+    for (int i = 0; i < bluList.length; i++) {
       final Uint8List markerIcon = await getBytesFromCanvas();
-
       markers.add(
-          Marker(
-            markerId: MarkerId(bluList[i].name),
-            position: bluList[i].latLng,
-            infoWindow: InfoWindow(
-              title: bluList[i].name,
-              snippet: bluList[i].text,
-            ),
-
-//            icon: i == bluList.length -1? BitmapDescriptor.fromBytes(markerIcon) : BitmapDescriptor.defaultMarker,
-            icon: i == bluList.length -1? BitmapDescriptor.fromBytes(markerIcon) : BitmapDescriptor.defaultMarker,
-            onTap: (){},
+        Marker(
+          markerId: MarkerId(bluList[i].name),
+          position: bluList[i].latLng,
+          infoWindow: InfoWindow(
+            title: bluList[i].name,
+            snippet: bluList[i].text,
           ),
+          icon: i == bluList.length - 1 ? BitmapDescriptor.fromBytes(markerIcon) : BitmapDescriptor.defaultMarker,
+          onTap: () {},
+        ),
       );
     }
   }
@@ -81,14 +78,16 @@ class _BiutimiAppState extends State<BiutimiApp> {
     _addMark();
 
     // set circle
-    Set<Circle> circles = Set.from([Circle(
-      circleId: CircleId("Center"),
-      center: _initialPosition,
-      fillColor: Colors.red.withOpacity(0.1),
-      strokeColor: Colors.red.withOpacity(0.5),
-      strokeWidth: 2,
-      radius: 900,
-    )]);
+    Set<Circle> circles = Set.from([
+      Circle(
+        circleId: CircleId("Center"),
+        center: _initialPosition,
+        fillColor: Colors.red.withOpacity(0.1),
+        strokeColor: Colors.red.withOpacity(0.5),
+        strokeWidth: 2,
+        radius: 900,
+      )
+    ]);
 
     return Scaffold(
       body: Stack(
@@ -220,12 +219,13 @@ class _BiutimiAppState extends State<BiutimiApp> {
                         padding: EdgeInsets.only(top: padding),
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
-                        itemCount: bluList.length -1,  // last item : center position
+                        itemCount: bluList.length - 1,
+                        // last item : center position
                         itemBuilder: (context, index) {
                           return Transform.translate(
                             offset: Offset(padding, 0.0),
                             child: InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailPage(index)));
                               },
                               child: Container(

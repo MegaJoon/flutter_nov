@@ -157,6 +157,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
+                    SizedBox(height: 8.0),
                     // name
                     Text(
                       bluList[widget.index].name,
@@ -169,7 +170,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
 
                     // recognize
                     Container(
-                      margin: EdgeInsets.only(top: padding),
+                      margin: EdgeInsets.only(top: padding, bottom: padding),
                       height: 32.0,
                       child: Row(
                         children: <Widget>[
@@ -340,7 +341,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
 
                     // hair styling
                     Container(
-                      height: 220.0,
+                      height: 200.0,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
