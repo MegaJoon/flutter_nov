@@ -14,6 +14,7 @@ import 'package:flutter_nov/1127/clothes_line_page.dart';
 import 'package:flutter_nov/1127/starbucks_app.dart';
 import 'package:flutter_nov/1128/biutimi.dart';
 import 'package:flutter_nov/1129/medical_app.dart';
+import 'package:flutter_nov/1130/custom_switch.dart';
 
 import '1106/reminders_mobile_app.dart';
 import '1107/instagram_app.dart';
@@ -67,7 +68,8 @@ class MyApp extends StatelessWidget {
 //      home: ClotheslinePage(), // 11-27
 //      home: StarbucksApp(), // 11-27
 //      home: BiutimiApp(), // 11-28
-      home: MedicalApp(), // 11-29
+//      home: MedicalApp(), // 11-29
+      home: CustomSwitch(), // 11-30
     );
   }
 }
