@@ -11,6 +11,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
   // color list
   Color _backgroundColor = Colors.black87;
   Color _textColor = Colors.white;
+  Color _switchColor = Colors.black;
 
   double padding = 16.0;  // app container padding
   double paddingBtn = 6.0;  // btn padding in switch
@@ -38,6 +39,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
       // set color
       _backgroundColor = Colors.amber;
       _textColor = Colors.black;
+      _switchColor = Colors.grey.withOpacity(0.5);
     });
   }
 
@@ -49,6 +51,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
       // set color
       _backgroundColor = Colors.black87;
       _textColor = Colors.white;
+      _switchColor = Colors.black;
     });
   }
 
@@ -61,7 +64,10 @@ class _CustomSwitchState extends State<CustomSwitch> {
         children: <Widget>[
           // background color container
           Positioned.fill(
-              child: Container(
+            // when changed color, add animation
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              curve: Curves.fastOutSlowIn,
                 color: _backgroundColor,
               ),
           ),
@@ -124,7 +130,7 @@ class _CustomSwitchState extends State<CustomSwitch> {
                     top: 0,
                     left: (50.0 - 2.0) /2,
                     right: (50.0 - 2.0) /2,
-                    bottom: 0,
+                    bottom: paddingBtn,
                     child: Container(
                       color: Colors.white,
                     ),
@@ -142,11 +148,14 @@ class _CustomSwitchState extends State<CustomSwitch> {
                       onTap: (){
                         _onPressed();
                       },
-                      child: Container(
+                      // when changed color, add animation
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.fastOutSlowIn,
                         height: 150.0,
                         decoration: ShapeDecoration(
                           shape: StadiumBorder(),
-                          color: Colors.black,
+                          color: _switchColor,
                         ),
                         child: Stack(
                           children: <Widget>[
